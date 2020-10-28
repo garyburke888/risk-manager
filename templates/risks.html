@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Manager</title>
+</head>
+<body>
+    {% for risk in risks %}
+        {{ risk.risk_name }}<br>
+        {{ risk.category_name }}<br>
+        {{ risk.risk_description }}<br>
+        {{ risk.risk_score}}<br>
+        {{ risk.risk_rating}}<br>
+        {{ risk.is_new }}<br>
+        {{ risk.review_date }}<br>
+    {% endfor %}
+</body>
+</html>
