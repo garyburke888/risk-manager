@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_risks")
 def get_risks():
-    risks = mongo.db.risks.find()
+    risks = list(mongo.db.risks.find())
     return render_template("risks.html", risks=risks)
 
 

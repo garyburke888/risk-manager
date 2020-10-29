@@ -1,30 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-    {% for risk in risks %}
-        {{ risk.risk_name }}<br>
-        {{ risk.category_name }}<br>
-        {{ risk.risk_description }}<br>
-        {{ risk.risk_score}}<br>
-        {{ risk.risk_rating}}<br>
-        {{ risk.is_new }}<br>
-        {{ risk.review_date }}<br>
-    {% endfor %}
-
     <ul class="collapsible">
+        {% for risk in risks %}
         <li>
-            <div class="collapsible-header white-text teal darken-1 text-shadow"><i class="fas fa-caret-down"></i>First</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            <div class="collapsible-header white-text teal darken-1 text-shadow">
+                <i class="fas fa-caret-down"></i>
+                <strong>{{ risk.risk_name }}</strong> : {{ risk.review_date}}
+                {% if risk.is_new == "on" %}
+                    <i class="fas fa-exclamation-circle white-text text-darken-1 tooltipped"
+                        data-position="right" data-tooltip="URGENT!"></i>
+                {% endif %}
+            </div>
+            <div class="collapsible-body">
+                <strong>{{ risk.category_name}}</strong>
+                <p>{{ risk.risk_description}}</p>
+            </div>
+            <div class="collapsible-body">
+                <p>{{ risk.risk_score}}</p>
+                <p>{{ risk.risk_rating}}</p>
+            </div>
         </li>
-        <li>
-            <div class="collapsible-header white-text teal darken-1 text-shadow"><i class="fas fa-caret-down"></i>Second</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-            <div class="collapsible-header white-text teal darken-1 text-shadow"><i class="fas fa-caret-down"></i>Third</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
+        {% endfor %}
     </ul>
 
 {% endblock %}
