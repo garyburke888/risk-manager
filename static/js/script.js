@@ -11,7 +11,6 @@
             done: "Select"
         }
     });
-});
 
  validateMaterializeSelect();
     function validateMaterializeSelect() {
