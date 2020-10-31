@@ -6,8 +6,8 @@
         <li>
             <div class="collapsible-header white-text teal darken-1 text-shadow">
                 <i class="fas fa-caret-down"></i>
-                <strong>{{ risk.risk_name }}</strong> : {{ risk.review_date}}
-                {% if risk.is_new == "on" %}
+                <strong>{{ risk.risk_name }}</strong>
+                {% if risk.is_urgent == "on" %}
                     <i class="fas fa-exclamation-circle white-text text-darken-1 tooltipped"
                         data-position="right" data-tooltip="URGENT!"></i>
                 {% endif %}
@@ -19,6 +19,7 @@
             <div class="collapsible-body">
                 <p>{{ risk.risk_score}}</p>
                 <p>{{ risk.risk_rating}}</p>
+                <p>{{ risk.review_date}}</p>
             </div>
         </li>
         {% endfor %}
