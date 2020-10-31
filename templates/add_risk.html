@@ -4,8 +4,8 @@
     <h3 class="teal-text text-darken-1 center-align">Add Risk</h3>
 
     <div class="row class= card-panel grey lighten-5">
-        <form class="col s12" method="POST" action="">
-
+        <form class="col s12" method="POST" action=""action="{{ url_for('add_risk') }}">
+            <!-- risk name -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-exclamation-triangle prefix teal-text text-darken-1"></i>
@@ -14,7 +14,7 @@
                     <label for="risk_name">Risk Name</label>
                 </div>
             </div>
-
+            <!-- category name drop-down -->
             <div class="row">
 				<div class="input-field col s12">
                     <i class="fas fa-folder-open prefix teal-text text-darken-1"></i>
@@ -27,16 +27,16 @@
 					<label for="category_name">Risk Category</label>
 				</div>
 			</div>
-
+            <!-- risk description -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix teal-text text-darken-1"></i>
                     <textarea id="risk_description" name="risk_description" minlength="5"
-                        maxlength="200" class="materialize-textarea validate" required></textarea>
+                        maxlength="500" class="materialize-textarea validate" required></textarea>
                     <label for="risk_description">Risk Description</label>
                 </div>
             </div>
-
+            <!-- review date picker -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-calendar-alt prefix teal-text text-darken-1"></i>
@@ -44,7 +44,7 @@
                     <label for="review_date">Review Date</label>
                 </div>
             </div>
-
+            <!-- is urgent -->
             <div class="row">
 				<div class="input-field col s12">
 					<div class="switch">
@@ -57,6 +57,14 @@
 					</div>
 				</div>
 			</div>
+            <!-- submit button -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn-large teal darken-1 text-shadow">
+                        Add Risk <i class="fas fa-plus-square right"></i>
+                    </button>
+                </div>
+            </div>
 
         </form>
     </div>

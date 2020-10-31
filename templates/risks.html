@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <h3 class="teal-text text-darken-1 center-align">Risk Register</h3>
+
     <ul class="collapsible">
         {% for risk in risks %}
         <li>
@@ -20,6 +22,7 @@
                 <p>{{ risk.risk_score}}</p>
                 <p>{{ risk.risk_rating}}</p>
                 <p>{{ risk.review_date}}</p>
+                <p><em>Added by: {{ risk.created_by }}</em></p>
             </div>
         </li>
         {% endfor %}

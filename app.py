@@ -99,8 +99,22 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_risk")
+@app.route("/add_risk", methods=["GET", "POST"])
 def add_risk():
+    if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        risk = {
+            "category_name": request.form.get("category_name"),
+            "risk_name": request.form.get("risk_name"),
+            "risk_description": request.form.get("risk_description"),
+            "is_urgent": is_urgent,
+            "review_date": request.form.get("review_date"),
+            "created_by": session["user"]
+        }
+        mongo.db.risks.insert_one(risk)
+        flash("Risk Successfully Added")
+        return redirect(url_for("get_risks"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_risk.html", categories=categories)
 
