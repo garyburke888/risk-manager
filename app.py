@@ -101,7 +101,8 @@ def logout():
 
 @app.route("/add_risk")
 def add_risk():
-    return render_template("add_risk.html")
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_risk.html", categories=categories)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
