@@ -118,6 +118,14 @@ def add_risk():
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_risk.html", categories=categories)
 
+
+@app.route("/edit_risk/<risk_id>", methods=["GET", "POST"])
+def edit_risk(risk_id):
+    risk = mongo.db.risks.find_one({"_id": ObjectId(risk_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_risk.html", risk=risk, categories=categories)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

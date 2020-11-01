@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="teal-text text-darken-1 center-align">Edit Risk</h3>
+
+    <div class="row class= card-panel grey lighten-5">
+        <form class="col s12" method="POST" action="{{ url_for('edit_risk', risk_id=risk._id) }}">
+            <!-- risk name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-exclamation-triangle prefix teal-text text-darken-1"></i>
+                    <input id="risk_name" name="risk_name" minlength="5" maxlength="50" 
+                        type="text" class="validate" required>
+                    <label for="risk_name">Risk Name</label>
+                </div>
+            </div>
+            <!-- category name drop-down -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-folder-open prefix teal-text text-darken-1"></i>
+					<select id="category_name" name="category_name" class="validate" required>
+                        <option value="" disabled selected>Choose Category</option>
+                        {% for category in categories %}
+                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="category_name">Risk Category</label>
+				</div>
+			</div>
+            <!-- risk description -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix teal-text text-darken-1"></i>
+                    <textarea id="risk_description" name="risk_description" minlength="5"
+                        maxlength="500" class="materialize-textarea validate" required></textarea>
+                    <label for="risk_description">Risk Description</label>
+                </div>
+            </div>
+            <!-- review date picker -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-calendar-alt prefix teal-text text-darken-1"></i>
+                    <input id="review_date" name="review_date" type="text" class="datepicker validate" required>
+                    <label for="review_date">Review Date</label>
+                </div>
+            </div>
+            <!-- is urgent -->
+            <div class="row">
+				<div class="input-field col s12">
+					<div class="switch">
+                        <i class="fas fa-exclamation-circle prefix teal-text text-darken-1"></i>
+						<label for="is_urgent">
+                            <input type="checkbox" id="is_urgent" name="is_urgent">
+                            <span class="lever"></span>
+                            Is Urgent
+                        </label>
+					</div>
+				</div>
+			</div>
+            <!-- submit button -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn-large teal darken-1 text-shadow">
+                        Edit Risk <i class="fas fa-edit right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}
