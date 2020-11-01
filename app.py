@@ -139,6 +139,13 @@ def edit_risk(risk_id):
     return render_template("edit_risk.html", risk=risk, categories=categories)
 
 
+@app.route("/delete_risk/<risk_id>")
+def delete_risk(risk_id):
+    mongo.db.risks.remove({"_id": ObjectId(risk_id)})
+    flash("Risk Successfully Deleted")
+    return redirect(url_for("get_risks"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
