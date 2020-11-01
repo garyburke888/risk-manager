@@ -57,12 +57,11 @@
 					<div class="switch">
                         <i class="fas fa-exclamation-circle prefix teal-text text-darken-1"></i>
 						<label for="is_urgent">
-                            <input type="checkbox" id="is_urgent" name="is_urgent">
-                                {% if risk.is_urgent == "on" %}
-                                    <input type="checkbox" id="is_urgent" name="is_urgent" checked>
-                                {% else %}
-                                    <input type="checkbox" id="is_urgent" name="is_urgent">
-                                {% endif %}
+                            {% if risk.is_urgent == "on" %}
+                                <input type="checkbox" id="is_urgent" name="is_urgent" checked>
+                            {% else %}
+                                <input type="checkbox" id="is_urgent" name="is_urgent">
+                            {% endif %}
                             <span class="lever"></span>
                             Is Urgent
                         </label>

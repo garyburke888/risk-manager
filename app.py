@@ -121,6 +121,19 @@ def add_risk():
 
 @app.route("/edit_risk/<risk_id>", methods=["GET", "POST"])
 def edit_risk(risk_id):
+    if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "risk_name": request.form.get("risk_name"),
+            "risk_description": request.form.get("risk_description"),
+            "is_urgent": is_urgent,
+            "review_date": request.form.get("review_date"),
+            "created_by": session["user"]
+        }
+        mongo.db.risks.update({"_id": ObjectId(risk_id)}, submit)
+        flash("Risk Successfully Updated")
+
     risk = mongo.db.risks.find_one({"_id": ObjectId(risk_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_risk.html", risk=risk, categories=categories)
