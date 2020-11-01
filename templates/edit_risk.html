@@ -10,21 +10,25 @@
                 <div class="input-field col s12">
                     <i class="fas fa-exclamation-triangle prefix teal-text text-darken-1"></i>
                     <input id="risk_name" name="risk_name" minlength="5" maxlength="50" 
-                        type="text" class="validate" required>
+                        value="{{ risk.risk_name }}" type="text" class="validate" required>
                     <label for="risk_name">Risk Name</label>
                 </div>
             </div>
-            <!-- category name drop-down -->
+            <!-- category selection -->
             <div class="row">
 				<div class="input-field col s12">
                     <i class="fas fa-folder-open prefix teal-text text-darken-1"></i>
-					<select id="category_name" name="category_name" class="validate" required>
-                        <option value="" disabled selected>Choose Category</option>
-                        {% for category in categories %}
-                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                        {% endfor %}
-                    </select>
-					<label for="category_name">Risk Category</label>
+                        <select id="category_name" name="category_name" class="validate" required>
+                            <option value="" disabled>Choose Category</option>
+                            {% for category in categories %}
+                                {% if category.category_name == risk.category_name %}
+                                    <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                                {% else %}
+                                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+					<label for="category_name">Task Category</label>
 				</div>
 			</div>
             <!-- risk description -->
@@ -32,7 +36,9 @@
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix teal-text text-darken-1"></i>
                     <textarea id="risk_description" name="risk_description" minlength="5"
-                        maxlength="500" class="materialize-textarea validate" required></textarea>
+                        maxlength="500" class="materialize-textarea validate" required>
+                        {{- risk.risk_description -}}
+                    </textarea>
                     <label for="risk_description">Risk Description</label>
                 </div>
             </div>
@@ -40,7 +46,8 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-calendar-alt prefix teal-text text-darken-1"></i>
-                    <input id="review_date" name="review_date" type="text" class="datepicker validate" required>
+                    <input id="review_date" name="review_date" type="text" 
+                        value="{{ risk.review_date }}" class="datepicker validate" required>
                     <label for="review_date">Review Date</label>
                 </div>
             </div>
@@ -51,6 +58,11 @@
                         <i class="fas fa-exclamation-circle prefix teal-text text-darken-1"></i>
 						<label for="is_urgent">
                             <input type="checkbox" id="is_urgent" name="is_urgent">
+                                {% if risk.is_urgent == "on" %}
+                                    <input type="checkbox" id="is_urgent" name="is_urgent" checked>
+                                {% else %}
+                                    <input type="checkbox" id="is_urgent" name="is_urgent">
+                                {% endif %}
                             <span class="lever"></span>
                             Is Urgent
                         </label>
@@ -60,6 +72,10 @@
             <!-- submit button -->
             <div class="row">
                 <div class="col s12 center-align">
+                    <!-- cancel button -->
+                    <a href="{{ url_for('get_risks') }}" class="btn-large red text-shadow">
+                        Cancel <i class="fas fa-times-circle right"></i>
+                    </a>
                     <button type="submit" class="btn-large teal darken-1 text-shadow">
                         Edit Risk <i class="fas fa-edit right"></i>
                     </button>
