@@ -25,6 +25,13 @@ def get_risks():
     return render_template("risks.html", risks=risks)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    risks = list(mongo.db.risks.find({"$text": {"$search": query}}))
+    return render_template("risks.html", risks=risks)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
