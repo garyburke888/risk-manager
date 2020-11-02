@@ -42,13 +42,16 @@
                 </div>
             </div>
             <div class="collapsible-body">
-                <strong>{{ risk.category_name}}</strong>
+                <h6>Risk Category:</h6>
+                <p>{{ risk.category_name}}</p>
+                <h6>Risk Description:</h6>
                 <p>{{ risk.risk_description}}</p>
+                <h6>Risk Rating:</h6>
+                <p>{{ risk.rating_name}}</p>
+                <h6>Review Date:</h6>
+                <p>{{ risk.review_date}}</p>
             </div>
             <div class="collapsible-body">
-                <p>{{ risk.risk_score}}</p>
-                <p>{{ risk.risk_rating}}</p>
-                <p>{{ risk.review_date}}</p>
                 <p><em>Added by: {{ risk.created_by }}</em></p>
             </div>
         </li>

@@ -14,7 +14,7 @@
                     <label for="risk_name">Risk Name</label>
                 </div>
             </div>
-            <!-- category name drop-down -->
+            <!-- category selection -->
             <div class="row">
 				<div class="input-field col s12">
                     <i class="fas fa-folder-open prefix teal-text text-darken-1"></i>
@@ -36,6 +36,19 @@
                     <label for="risk_description">Risk Description</label>
                 </div>
             </div>
+            <!-- risk rating selection -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-ruler-vertical prefix teal-text text-darken-1"></i>
+					<select id="rating_name" name="rating_name" class="validate" required>
+                        <option value="" disabled selected>Choose Rating</option>
+                        {% for rating in ratings %}
+                            <option value="{{ rating.rating_name }}">{{ rating.rating_name }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="rating_name">Risk Rating</label>
+				</div>
+			</div>
             <!-- review date picker -->
             <div class="row">
                 <div class="input-field col s12">

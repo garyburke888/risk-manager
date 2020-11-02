@@ -28,7 +28,7 @@
                                 {% endif %}
                             {% endfor %}
                         </select>
-					<label for="category_name">Task Category</label>
+					<label for="category_name">Risk Category</label>
 				</div>
 			</div>
             <!-- risk description -->
@@ -42,6 +42,23 @@
                     <label for="risk_description">Risk Description</label>
                 </div>
             </div>
+            <!-- risk rating -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-folder-open prefix teal-text text-darken-1"></i>
+                        <select id="rating_name" name="rating_name" class="validate" required>
+                            <option value="" disabled>Choose Rating</option>
+                            {% for rating in ratings %}
+                                {% if rating.rating_name == risk.rating_name %}
+                                    <option value="{{ rating.rating_name }}" selected>{{ rating.rating_name }}</option>
+                                {% else %}
+                                    <option value="{{ rating.rating_name }}">{{ rating.rating_name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+					<label for="rating_name">Risk Rating</label>
+				</div>
+			</div>
             <!-- review date picker -->
             <div class="row">
                 <div class="input-field col s12">

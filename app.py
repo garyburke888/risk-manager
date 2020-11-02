@@ -114,6 +114,7 @@ def add_risk():
             "category_name": request.form.get("category_name"),
             "risk_name": request.form.get("risk_name"),
             "risk_description": request.form.get("risk_description"),
+            "rating_name": request.form.get("rating_name"),
             "is_urgent": is_urgent,
             "review_date": request.form.get("review_date"),
             "created_by": session["user"]
@@ -122,8 +123,9 @@ def add_risk():
         flash("Risk Successfully Added")
         return redirect(url_for("get_risks"))
 
+    ratings = mongo.db.ratings.find().sort("rating_name")
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_risk.html", categories=categories)
+    return render_template("add_risk.html", ratings=ratings, categories=categories)
 
 
 @app.route("/edit_risk/<risk_id>", methods=["GET", "POST"])
@@ -134,6 +136,7 @@ def edit_risk(risk_id):
             "category_name": request.form.get("category_name"),
             "risk_name": request.form.get("risk_name"),
             "risk_description": request.form.get("risk_description"),
+            "rating_name": request.form.get("rating_name"),
             "is_urgent": is_urgent,
             "review_date": request.form.get("review_date"),
             "created_by": session["user"]
@@ -142,8 +145,9 @@ def edit_risk(risk_id):
         flash("Risk Successfully Updated")
 
     risk = mongo.db.risks.find_one({"_id": ObjectId(risk_id)})
+    ratings = mongo.db.ratings.find().sort("rating_name", 1)
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_risk.html", risk=risk, categories=categories)
+    return render_template("edit_risk.html", risk=risk, ratings=ratings, categories=categories)
 
 
 @app.route("/delete_risk/<risk_id>")
