@@ -123,7 +123,7 @@ def add_risk():
         flash("Risk Successfully Added")
         return redirect(url_for("get_risks"))
 
-    ratings = mongo.db.ratings.find().sort("rating_name")
+    ratings = mongo.db.ratings.find()
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_risk.html", ratings=ratings, categories=categories)
 
@@ -145,7 +145,7 @@ def edit_risk(risk_id):
         flash("Risk Successfully Updated")
 
     risk = mongo.db.risks.find_one({"_id": ObjectId(risk_id)})
-    ratings = mongo.db.ratings.find().sort("rating_name", 1)
+    ratings = mongo.db.ratings.find()
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_risk.html", risk=risk, ratings=ratings, categories=categories)
 
