@@ -18,7 +18,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/")
+
 @app.route("/get_risks")
 def get_risks():
     risks = list(mongo.db.risks.find())
@@ -57,6 +57,7 @@ def register():
     return render_template("register.html")
 
 
+@app.route("/")
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":

@@ -18,20 +18,17 @@
     <!-- top navbar -->
         <nav class="nav-extended text-shadow teal darken-1">
             <div class="nav-wrapper">
-            <a href="{{ url_for('get_risks') }}" class="brand-logo">eRisk</a>
+            <a href="{{ url_for('login') }}" class="brand-logo center">eRisk</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="{{ url_for('get_risks') }}">Home</a></li>
                 {% if session.user %}
+                    <li><a href="{{ url_for('get_risks') }}">Risk Register</a></li>
                     <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     <li><a href="{{ url_for('add_risk') }}">New Risk</a></li>
                     {% if session.user|lower == "admin"|lower %}
                         <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
                     {% endif %}
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                {% else %}
-                    <li><a href="{{ url_for('login') }}">Log In</a></li>
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
                 {% endif %}
             </ul>
             </div>
@@ -40,18 +37,15 @@
         <!-- mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
             <li><h4 class="center-align teal-text text-darken-1">eRisk</h4></li>
-            <li><a href="{{ url_for('get_risks') }}">Home</a></li>
-            {% if session.user %}
-                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                <li><a href="{{ url_for('add_risk') }}">New Risk</a></li>
-                {% if session.user|lower == "admin"|lower %}
-                    <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+                {% if session.user %}
+                    <li><a href="{{ url_for('get_risks') }}">Risk Register</a></li>
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                    <li><a href="{{ url_for('add_risk') }}">New Risk</a></li>
+                    {% if session.user|lower == "admin"|lower %}
+                        <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 {% endif %}
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-            {% else %}
-                <li><a href="{{ url_for('login') }}">Log In</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
-            {% endif %}
         </ul>
     </header>
 
@@ -61,7 +55,7 @@
             {% if messages %}
                 {% for message in messages %}
                     <div class="row flashes">
-                        <h4 class="blue-grey lighten-1 center-align">{{ message }}</h4>
+                        <h4 class="teal lighten-1 center-align">{{ message }}</h4>
                     </div>
                 {% endfor %}
             {% endif %}
