@@ -18,7 +18,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-
 @app.route("/get_risks")
 def get_risks():
     risks = list(mongo.db.risks.find())

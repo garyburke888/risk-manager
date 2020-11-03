@@ -8,7 +8,7 @@
             <!-- risk name -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-exclamation-triangle prefix teal-text text-darken-1"></i>
+                    <i class="fas fa-tag prefix teal-text text-darken-1"></i>
                     <input id="risk_name" name="risk_name" minlength="5" maxlength="50" 
                         value="{{ risk.risk_name }}" type="text" class="validate" required>
                     <label for="risk_name">Risk Name</label>
@@ -45,7 +45,7 @@
             <!-- risk rating -->
             <div class="row">
 				<div class="input-field col s12">
-                    <i class="fas fa-folder-open prefix teal-text text-darken-1"></i>
+                    <i class="fas fa-ruler-vertical prefix teal-text text-darken-1"></i>
                         <select id="rating_name" name="rating_name" class="validate" required>
                             <option value="" disabled>Choose Rating</option>
                             {% for rating in ratings %}
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col s12 center-align">
                     <!-- cancel button -->
-                    <a href="{{ url_for('get_risks') }}" class="btn-large red text-shadow">
+                    <a href="{{ url_for('get_risks') }}" class="btn-large red darken-1 text-shadow">
                         Cancel <i class="fas fa-times-circle right"></i>
                     </a>
                     <button type="submit" class="btn-large teal darken-1 text-shadow">

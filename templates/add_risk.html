@@ -4,11 +4,11 @@
     <h3 class="teal-text text-darken-1 center-align">Add Risk</h3>
 
     <div class="row class= card-panel grey lighten-5">
-        <form class="col s12" method="POST" action=""action="{{ url_for('add_risk') }}">
+        <form class="col s12" method="POST" action="{{ url_for('add_risk') }}">
             <!-- risk name -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-exclamation-triangle prefix teal-text text-darken-1"></i>
+                    <i class="fas fa-tag prefix teal-text text-darken-1"></i>
                     <input id="risk_name" name="risk_name" minlength="5" maxlength="50" 
                         type="text" class="validate" required>
                     <label for="risk_name">Risk Name</label>
@@ -74,7 +74,7 @@
             <div class="row">
                 <div class="col s12 center-align">
                     <button type="submit" class="btn-large teal darken-1 text-shadow">
-                        Add Risk <i class="fas fa-plus-square right"></i>
+                        Add <i class="fas fa-plus-square right"></i>
                     </button>
                 </div>
             </div>

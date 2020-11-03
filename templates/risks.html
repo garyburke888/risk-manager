@@ -2,6 +2,7 @@
 {% block content %}
 
     <h3 class="blue-grey-text text-darken-1 center-align">Risk Register</h3>
+
     <!-- search box -->
     <div class="row card-panel blue-grey lighten-5">
         <form action="{{ url_for('search') }}" method="post" class="col s12">
@@ -19,6 +20,7 @@
             </div>
         </form>
     </div>
+
     <!-- collapsible risk register -->
     {% if risks|length > 0 %}
     <ul class="collapsible">
@@ -35,20 +37,20 @@
                 </div>
             </div>
             <div class="collapsible-body">
-                <h6>Risk Category:</h6>
+                <h6><i class="fas fa-folder-open prefix teal-text text-darken-1"></i> Risk Category:</h6>
                 <p>{{ risk.category_name}}</p>
-                <h6>Risk Description:</h6>
+                <h6><i class="fas fa-align-left prefix teal-text text-darken-1"></i> Risk Description:</h6>
                 <p>{{ risk.risk_description}}</p>
-                <h6>Risk Rating:</h6>
+                <h6><i class="fas fa-ruler-vertical prefix teal-text text-darken-1"></i> Risk Rating:</h6>
                 <p>{{ risk.rating_name}}</p>
-                <h6>Review Date:</h6>
+                <h6><i class="fas fa-calendar-alt prefix teal-text text-darken-1"></i> Review Date:</h6>
                 <p>{{ risk.review_date}}</p>
             </div>
             <div class="collapsible-body">
                 <p><em>Added by: {{ risk.created_by }}</em></p>
                 {% if session.user|lower == risk.created_by|lower %}
-                    <a href="{{ url_for('edit_risk', risk_id=risk._id )}}" class="waves-effect waves-light btn-small">Edit</a>
-                    <a href="{{ url_for('delete_risk', risk_id=risk._id) }}" class="waves-effect waves-light btn-small">Delete</a>
+                    <a href="{{ url_for('edit_risk', risk_id=risk._id )}}" class="waves-effect waves-light btn-small">Edit <i class="fas fa-edit prefix"></i></a>
+                    <a href="{{ url_for('delete_risk', risk_id=risk._id) }}" class="waves-effect waves-light btn-small">Delete <i class="fas fa-trash prefix"></i></a>
                 {% endif %}
             </div>
         </li>
