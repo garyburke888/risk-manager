@@ -5,6 +5,7 @@
 
     <div class="row class= card-panel grey lighten-5">
         <form class="col s12" method="POST" action="{{ url_for('edit_risk', risk_id=risk._id) }}">
+            
             <!-- risk name -->
             <div class="row">
                 <div class="input-field col s12">
@@ -14,38 +15,113 @@
                     <label for="risk_name">Risk Name</label>
                 </div>
             </div>
-            <!-- category selection -->
+
+            <!-- Risk Owner Selection -->
             <div class="row">
 				<div class="input-field col s12">
                     <i class="fas fa-folder-open prefix teal-text text-darken-1"></i>
-                        <select id="category_name" name="category_name" class="validate" required>
-                            <option value="" disabled>Choose Category</option>
-                            {% for category in categories %}
-                                {% if category.category_name == risk.category_name %}
-                                    <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                        <select id="owner_name" name="owner_name" class="validate" required>
+                            <option value="" disabled>Choose Owner</option>
+                            {% for owner in owners %}
+                                {% if owner.owner_name == risk.owner_name %}
+                                    <option value="{{ owner.owner_name }}" selected>{{ owner.owner_name }}</option>
                                 {% else %}
-                                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                                    <option value="{{ owner.owner_name }}">{{ owner.owner_name }}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>
-					<label for="category_name">Risk Category</label>
+					<label for="owner_name">Risk Owner</label>
 				</div>
 			</div>
-            <!-- risk description -->
+
+            <!-- Risk Description -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix teal-text text-darken-1"></i>
                     <textarea id="risk_description" name="risk_description" minlength="5"
-                        maxlength="500" class="materialize-textarea validate" required>
+                        maxlength="200" class="materialize-textarea validate" required>
                         {{- risk.risk_description -}}
                     </textarea>
                     <label for="risk_description">Risk Description</label>
                 </div>
             </div>
-            <!-- risk rating -->
+
+            <!-- Mitigating Action -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-wrench prefix teal-text text-darken-1"></i>
+                    <textarea id="mitigating_action" name="mitigating_action" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required>
+                        {{- risk.mitigating_action -}}
+                    </textarea>
+                    <label for="mitigating_action">Mitigating Action</label>
+                </div>
+            </div>
+
+            <!-- Contingent Action -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-tools prefix teal-text text-darken-1"></i>
+                    <textarea id="contingent_action" name="contingent_action" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required>
+                        {{- risk.contingent_action -}}
+                    </textarea>
+                    <label for="contingent_action">Contingent Action</label>
+                </div>
+            </div>
+
+            <!-- Progress on Actions -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-poll prefix teal-text text-darken-1"></i>
+                    <textarea id="progress_on_actions" name="progress_on_actions" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required>
+                        {{- risk.progress_on_actions -}}
+                    </textarea>
+                    <label for="progress_on_actions">Progress on Actions</label>
+                </div>
+            </div>
+
+            <!-- Risk Likelihood -->
             <div class="row">
 				<div class="input-field col s12">
-                    <i class="fas fa-ruler-vertical prefix teal-text text-darken-1"></i>
+                    <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
+                        <select id="likelihood_name" name="likelihood_name" class="validate" required>
+                            <option value="" disabled>Choose Likelihood</option>
+                            {% for likelihood in likelihoods %}
+                                {% if likelihood.likelihood_name == risk.likelihood_name %}
+                                    <option value="{{ likelihood.likelihood_name }}" selected>{{ likelihood.likelihood_name }}</option>
+                                {% else %}
+                                    <option value="{{ likelihood.likelihood_name }}">{{ likelihood.likelihood_name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+					<label for="likelihood_name">Risk Likelihood</label>
+				</div>
+			</div>
+
+            <!-- Risk Impact -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
+                        <select id="impact_name" name="impact_name" class="validate" required>
+                            <option value="" disabled>Choose Impact</option>
+                            {% for impact in impacts %}
+                                {% if impact.impact_name == risk.impact_name %}
+                                    <option value="{{ impact.impact_name }}" selected>{{ impact.impact_name }}</option>
+                                {% else %}
+                                    <option value="{{ impact.impact_name }}">{{ impact.impact_name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+					<label for="impact_name">Risk Impact</label>
+				</div>
+			</div>
+
+            <!-- Risk Rating -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
                         <select id="rating_name" name="rating_name" class="validate" required>
                             <option value="" disabled>Choose Rating</option>
                             {% for rating in ratings %}
@@ -59,28 +135,31 @@
 					<label for="rating_name">Risk Rating</label>
 				</div>
 			</div>
-            <!-- review date picker -->
+
+            <!-- Date Raised Picker -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-calendar-alt prefix teal-text text-darken-1"></i>
-                    <input id="review_date" name="review_date" type="text" 
-                        value="{{ risk.review_date }}" class="datepicker validate" required>
-                    <label for="review_date">Review Date</label>
+                    <input id="date_raised" name="date_raised" type="text" 
+                        value="{{ risk.date_raised }}" class="datepicker validate" required>
+                    <label for="date_raised">Date Raised</label>
                 </div>
             </div>
-            <!-- is urgent -->
+
+            <!-- Risk Status -->
             <div class="row">
 				<div class="input-field col s12">
 					<div class="switch">
-                        <i class="fas fa-exclamation-circle prefix teal-text text-darken-1"></i>
-						<label for="is_urgent">
-                            {% if risk.is_urgent == "on" %}
-                                <input type="checkbox" id="is_urgent" name="is_urgent" checked>
+                        <p style="color:teal">Risk Status</p>
+						<label for="is_open">
+                            Closed
+                            {% if risk.is_open == "on" %}
+                                <input type="checkbox" id="is_open" name="is_open" checked>
                             {% else %}
-                                <input type="checkbox" id="is_urgent" name="is_urgent">
+                                <input type="checkbox" id="is_open" name="is_open">
                             {% endif %}
                             <span class="lever"></span>
-                            Is Urgent
+                            Open
                         </label>
 					</div>
 				</div>

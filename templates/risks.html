@@ -30,34 +30,58 @@
                 <div class="col s12">
                     <i class="fas fa-caret-down"></i>
                     <strong>{{ risk.risk_name }}</strong>
-                    {% if risk.status == "open" %}
+                    {% if risk.is_open == "on" %}
                     <i class="fas fa-exclamation-circle white-text text-darken-1 tooltipped"
-                        data-position="right" data-tooltip="RISK STATUS = OPEN"></i>
+                        data-position="right" data-tooltip="Risk Status = Open"></i>
                     {% endif %}
                 </div>
             </div>
             <div class="collapsible-body">
                 <div class="row">
                     <div class="col m4 s12">
-                        <h6><i class="fas fa-calendar-alt prefix teal-text text-darken-1"></i> Date Raised:</h6>
+                        <h6 style="color:teal;"><i class="fas fa-calendar-alt prefix teal-text text-darken-1"></i> Date Raised:</h6>
                         <p>{{ risk.date_raised}}</p>
-                        <h6><i class="fas fa-user prefix teal-text text-darken-1"></i> Risk Owner:</h6>
+                        <h6 style="color:teal;"><i class="fas fa-user prefix teal-text text-darken-1"></i> Risk Owner:</h6>
                         <p>{{ risk.owner_name}}</p>
-                        <h6><i class="fas fa-ruler-vertical prefix teal-text text-darken-1"></i> Likelihood:</h6>
-                        <p>{{ risk.likelihood_name}}</p>
-                        <h6><i class="fas fa-ruler-vertical prefix teal-text text-darken-1"></i> Impact:</h6>
-                        <p>{{ risk.impact_name}}</p>
-                        <h6><i class="fas fa-ruler-vertical prefix teal-text text-darken-1"></i> Overall Rating:</h6>
-                        <p>{{ risk.rating_name}}</p>
+                        <h6 style="color:teal;"><i class="fas fa-chevron-right prefix teal-text text-darken-1"></i> Likelihood:</h6>
+                            {% if risk.likelihood_name == "Low" %}
+                                <p style="color:green;"><strong>{{ risk.likelihood_name}}</strong></p>
+                            {% elif risk.likelihood_name == "Medium" %}
+                                <p style="color:orange;"><strong>{{ risk.likelihood_name}}</strong></p>
+                            {% elif risk.likelihood_name == "High" %}
+                                <p style="color:red;"><strong>{{ risk.likelihood_name}}</strong></p>
+                            {% endif %}
+                        <h6 style="color:teal;"><i class="fas fa-chevron-right prefix teal-text text-darken-1"></i> Impact:</h6>
+                            {% if risk.impact_name == "Low" %}
+                                <p style="color:green;"><strong>{{ risk.impact_name}}</strong></p>
+                            {% elif risk.impact_name == "Medium" %}
+                                <p style="color:orange;"><strong>{{ risk.impact_name}}</strong></p>
+                            {% elif risk.impact_name == "High" %}
+                                <p style="color:red;"><strong>{{ risk.impact_name}}</strong></p>
+                            {% endif %}
+                        <h6 style="color:teal;"><i class="fas fa-chevron-right prefix teal-text text-darken-1"></i> Overall Rating:</h6>
+                            {% if risk.rating_name == "Low" %}
+                                <p style="color:green;"><strong>{{ risk.rating_name}}</strong></p>
+                            {% elif risk.rating_name == "Medium" %}
+                                <p style="color:orange;"><strong>{{ risk.rating_name}}</strong></p>
+                            {% elif risk.rating_name == "High" %}
+                                <p style="color:red;"><strong>{{ risk.rating_name}}</strong></p>
+                            {% endif %}
+                        <h6 style="color:teal;"><i class="fas fa-location-arrow prefix teal-text text-darken-1"></i> Risk Status:</h6>
+                        {% if risk.is_open == "on" %}
+                            <p>Open</p>
+                        {% else %}
+                            <p>Closed</p>
+                        {% endif %}
                     </div>
                     <div class="col m8 s12">
-                        <h6><i class="fas fa-align-left prefix teal-text text-darken-1"></i> Description:</h6>
+                        <h6 style="color:teal;"><i class="fas fa-align-left prefix teal-text text-darken-1"></i> Description:</h6>
                         <p>{{ risk.risk_description}}</p>
-                        <h6><i class="fas fa-align-left prefix teal-text text-darken-1"></i> Mitigating Action:</h6>
+                        <h6 style="color:teal;"><i class="fas fa-wrench prefix teal-text text-darken-1"></i> Mitigating Action:</h6>
                         <p>{{ risk.mitigating_action}}</p>
-                        <h6><i class="fas fa-align-left prefix teal-text text-darken-1"></i> Contingent Action:</h6>
+                        <h6 style="color:teal;"><i class="fas fa-tools prefix teal-text text-darken-1"></i> Contingent Action:</h6>
                         <p>{{ risk.contingent_action}}</p>
-                        <h6><i class="fas fa-align-left prefix teal-text text-darken-1"></i> Progress on Actions:</h6>
+                        <h6 style="color:teal;"><i class="fas fa-poll prefix teal-text text-darken-1"></i> Progress on Actions:</h6>
                         <p>{{ risk.progress_on_actions}}</p>
                     </div>
                 </div>

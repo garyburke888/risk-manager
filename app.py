@@ -18,6 +18,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.route("/")
 @app.route("/get_risks")
 def get_risks():
     risks = list(mongo.db.risks.find())
@@ -56,7 +57,6 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/")
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -109,45 +109,59 @@ def logout():
 @app.route("/add_risk", methods=["GET", "POST"])
 def add_risk():
     if request.method == "POST":
-        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        is_open = "on" if request.form.get("is_open") else "off"
         risk = {
-            "category_name": request.form.get("category_name"),
+            "owner_name": request.form.get("owner_name"),
             "risk_name": request.form.get("risk_name"),
             "risk_description": request.form.get("risk_description"),
+            "likelihood_name": request.form.get("likelihood_name"),
+            "impact_name": request.form.get("impact_name"),
             "rating_name": request.form.get("rating_name"),
-            "is_urgent": is_urgent,
-            "review_date": request.form.get("review_date"),
+            "mitigating_action": request.form.get("mitigating_action"),
+            "contingent_action": request.form.get("contingent_action"),
+            "progress_on_actions": request.form.get("progress_on_actions"),
+            "date_raised": request.form.get("date_raised"),
+            "is_open": is_open,
             "created_by": session["user"]
         }
         mongo.db.risks.insert_one(risk)
         flash("Risk Successfully Added")
         return redirect(url_for("get_risks"))
 
+    owners = mongo.db.owners.find()
+    likelihoods = mongo.db.likelihoods.find()
+    impacts = mongo.db.impacts.find()
     ratings = mongo.db.ratings.find()
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_risk.html", ratings=ratings, categories=categories)
+    return render_template("add_risk.html", owners=owners, likelihoods=likelihoods, impacts=impacts, ratings=ratings)
 
 
 @app.route("/edit_risk/<risk_id>", methods=["GET", "POST"])
 def edit_risk(risk_id):
     if request.method == "POST":
-        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        is_open = "on" if request.form.get("is_open") else "off"
         submit = {
-            "category_name": request.form.get("category_name"),
+            "owner_name": request.form.get("owner_name"),
             "risk_name": request.form.get("risk_name"),
             "risk_description": request.form.get("risk_description"),
+            "likelihood_name": request.form.get("likelihood_name"),
+            "impact_name": request.form.get("impact_name"),
             "rating_name": request.form.get("rating_name"),
-            "is_urgent": is_urgent,
-            "review_date": request.form.get("review_date"),
+            "mitigating_action": request.form.get("mitigating_action"),
+            "contingent_action": request.form.get("contingent_action"),
+            "progress_on_actions": request.form.get("progress_on_actions"),
+            "date_raised": request.form.get("date_raised"),
+            "is_open": is_open,
             "created_by": session["user"]
         }
         mongo.db.risks.update({"_id": ObjectId(risk_id)}, submit)
         flash("Risk Successfully Updated")
 
     risk = mongo.db.risks.find_one({"_id": ObjectId(risk_id)})
+    owners = mongo.db.owners.find()
+    likelihoods = mongo.db.likelihoods.find()
+    impacts = mongo.db.impacts.find()
     ratings = mongo.db.ratings.find()
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_risk.html", risk=risk, ratings=ratings, categories=categories)
+    return render_template("edit_risk.html", risk=risk, owners=owners, likelihoods=likelihoods, impacts=impacts, ratings=ratings)
 
 
 @app.route("/delete_risk/<risk_id>")

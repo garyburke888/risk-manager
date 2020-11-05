@@ -5,7 +5,8 @@
 
     <div class="row class= card-panel grey lighten-5">
         <form class="col s12" method="POST" action="{{ url_for('add_risk') }}">
-            <!-- risk name -->
+            
+            <!-- Risk Name -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-tag prefix teal-text text-darken-1"></i>
@@ -14,80 +15,126 @@
                     <label for="risk_name">Risk Name</label>
                 </div>
             </div>
-            <!-- category selection -->
+            
+            <!-- Risk Owner Selection -->
             <div class="row">
 				<div class="input-field col s12">
-                    <i class="fas fa-folder-open prefix teal-text text-darken-1"></i>
-					<select id="category_name" name="category_name" class="validate" required>
-                        <option value="" disabled selected>Choose Category</option>
-                        {% for category in categories %}
-                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    <i class="fas fa-user prefix teal-text text-darken-1"></i>
+					<select id="owner_name" name="owner_name" class="validate" required>
+                        <option value="" disabled selected>Choose Owner</option>
+                        {% for owner in owners %}
+                            <option value="{{ owner.owner_name }}">{{ owner.owner_name }}</option>
                         {% endfor %}
                     </select>
-					<label for="category_name">Risk Category</label>
+					<label for="owner_name">Risk Owner</label>
 				</div>
 			</div>
-            <!-- risk description -->
+            
+            <!-- Risk Description -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix teal-text text-darken-1"></i>
                     <textarea id="risk_description" name="risk_description" minlength="5"
-                        maxlength="500" class="materialize-textarea validate" required></textarea>
+                        maxlength="200" class="materialize-textarea validate" required></textarea>
                     <label for="risk_description">Risk Description</label>
                 </div>
             </div>
-            <!-- risk rating selection -->
+
+            <!-- Mitigating Action -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-wrench prefix teal-text text-darken-1"></i>
+                    <textarea id="mitigating_action" name="mitigating_action" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required></textarea>
+                    <label for="mitigating_action">Mitigating Action</label>
+                </div>
+            </div>
+
+            <!-- Contingent Action -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-tools prefix teal-text text-darken-1"></i>
+                    <textarea id="contingent_action" name="contingent_action" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required></textarea>
+                    <label for="contingent_action">Contingent Action</label>
+                </div>
+            </div>
+
+            <!-- Progress on Actions -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-poll prefix teal-text text-darken-1"></i>
+                    <textarea id="progress_on_actions" name="progress_on_actions" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required></textarea>
+                    <label for="progress_on_actions">Progress on Actions</label>
+                </div>
+            </div>
+
+            <!-- Risk Likelihood Selection -->
             <div class="row">
 				<div class="input-field col s12">
-                    <i class="fas fa-ruler-vertical prefix teal-text text-darken-1"></i>
+                    <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
+					<select id="likelihood_name" name="likelihood_name" class="validate" required>
+                        <option value="" disabled selected>Choose Likelihood</option>
+                        {% for likelihood in likelihoods %}
+                            <option value="{{ likelihood.likelihood_name }}">{{ likelihood.likelihood_name }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="likelihood_name">Risk Likelihood</label>
+				</div>
+			</div>
+            
+            <!-- Risk Impact Selection -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
+					<select id="impact_name" name="impact_name" class="validate" required>
+                        <option value="" disabled selected>Choose Impact</option>
+                        {% for impact in impacts %}
+                            <option value="{{ impact.impact_name }}">{{ impact.impact_name }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="impact_name">Risk Impact</label>
+				</div>
+			</div>
+
+            <!-- Risk Rating Selection -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
 					<select id="rating_name" name="rating_name" class="validate" required>
                         <option value="" disabled selected>Choose Rating</option>
                         {% for rating in ratings %}
                             <option value="{{ rating.rating_name }}">{{ rating.rating_name }}</option>
                         {% endfor %}
                     </select>
-					<label for="rating_name">Risk Rating</label>
+					<label for="rating_name">Overall Risk Rating</label>
 				</div>
 			</div>
-            <!-- review date picker -->
+
+            <!-- Date Raised Picker -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-calendar-alt prefix teal-text text-darken-1"></i>
-                    <input id="review_date" name="review_date" type="text" class="datepicker validate" required>
-                    <label for="review_date">Review Date</label>
+                    <input id="date_raised" name="date_raised" type="text" class="datepicker validate" required>
+                    <label for="date_raised">Date Raised</label>
                 </div>
             </div>
-            <!-- is urgent -->
+
+            <!-- Risk Status -->
             <div class="row">
 				<div class="input-field col s12">
 					<div class="switch">
-                        <i class="fas fa-exclamation-circle prefix teal-text text-darken-1"></i>
-						<label for="is_urgent">
-                            <input type="checkbox" id="is_urgent" name="is_urgent">
+                        <p style="color:teal">Risk Status</p>
+						<label for="is_open">
+                            Closed
+                            <input type="checkbox" id="is_open" name="is_open">
                             <span class="lever"></span>
-                            Is Urgent
+                            Open
                         </label>
 					</div>
 				</div>
 			</div>
-            <!-- Risk Consequence -->
-            <div class="row">
-                <div class="range-field">
-                    <label for="risk_consequence">
-                        <input type="range" id="risk_consequence" name="risk_consequence" min="1" max="10">
-                        Risk Consequence
-                    </label>
-                </div>
-            </div>
-            <!-- Risk Liklihood -->
-            <div class="row">
-                <div class="range-field">
-                    <label for="risk_liklihood">
-                        <input type="range" id="risk_liklihood" name="risk_liklihood" min="1" max="10">
-                        Risk Liklihood
-                    </label>
-                </div>
-            </div>
 
             <!-- submit button -->
             <div class="row">
