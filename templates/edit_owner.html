@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="teal-text text-darken-1 center-align">Edit Risk Owner</h3>
+
+    <div class="row class= card-panel grey lighten-5">
+        <form class="col s12" method="POST" action="{{ url_for('edit_owner', owner_id=owner._id) }}">
+            
+            <!-- Owner Name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user prefix teal-text text-darken-1"></i>
+                    <input id="owner_name" name="owner_name" minlength="3" maxlength="25" 
+                        type="text" value="{{ owner.owner_name}}" class="validate" required>
+                    <label for="owner_name">Owner Name</label>
+                </div>
+            </div>
+
+            <!-- Cancel / Submit Buttons -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a href="{{ url_for('get_owners') }}" class="waves-effect waves-light btn-small">
+                        Cancel <i class="fas fa-times-circle right"></i>
+                    </a>
+                    <button type="submit" class="waves-effect waves-light btn-small">
+                        Edit <i class="fas fa-edit right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

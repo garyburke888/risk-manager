@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="teal-text text-darken-1 center-align">Add Risk Owner</h3>
+
+    <div class="row class= card-panel grey lighten-5">
+        <form class="col s12" method="POST" action="{{ url_for('add_owner') }}">
+            
+            <!-- Owner Name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user prefix teal-text text-darken-1"></i>
+                    <input id="owner_name" name="owner_name" minlength="3" maxlength="25" 
+                        type="text" class="validate" required>
+                    <label for="owner_name">Owner Name</label>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light btn-small">
+                        Add <i class="fas fa-plus-square right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

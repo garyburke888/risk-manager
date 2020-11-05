@@ -171,44 +171,44 @@ def delete_risk(risk_id):
     return redirect(url_for("get_risks"))
 
 
-@app.route("/get_categories")
-def get_categories():
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
-    return render_template("categories.html", categories=categories)
+@app.route("/get_owners")
+def get_owners():
+    owners = list(mongo.db.owners.find().sort("owner_name", 1))
+    return render_template("owners.html", owners=owners)
 
 
-@app.route("/add_category", methods=["GET", "POST"])
-def add_category():
+@app.route("/add_owner", methods=["GET", "POST"])
+def add_owner():
     if request.method == "POST":
-        category = {
-            "category_name": request.form.get("category_name")
+        owner = {
+            "owner_name": request.form.get("owner_name")
         }
-        mongo.db.categories.insert_one(category)
-        flash("New Category Added")
-        return redirect(url_for("get_categories"))
+        mongo.db.owners.insert_one(owner)
+        flash("Risk Owner Added")
+        return redirect(url_for("get_owners"))
 
-    return render_template("add_category.html")
+    return render_template("add_owner.html")
 
 
-@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
-def edit_category(category_id):
+@app.route("/edit_owner/<owner_id>", methods=["GET", "POST"])
+def edit_owner(owner_id):
     if request.method == "POST":
         submit = {
-            "category_name": request.form.get("category_name")
+            "owner_name": request.form.get("owner_name")
         }
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
-        flash("Category Successfully Updated")
-        return redirect(url_for("get_categories"))
+        mongo.db.owners.update({"_id": ObjectId(owner_id)}, submit)
+        flash("Risk Owner Successfully Updated")
+        return redirect(url_for("get_owners"))
 
-    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-    return render_template("edit_category.html", category=category)
+    owner = mongo.db.owners.find_one({"_id": ObjectId(owner_id)})
+    return render_template("edit_owner.html", owner=owner)
 
 
-@app.route("/delete_category/<category_id>")
-def delete_category(category_id):
-    mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category Successfully Deleted")
-    return redirect(url_for("get_categories"))
+@app.route("/delete_owner/<owner_id>")
+def delete_owner(owner_id):
+    mongo.db.owners.remove({"_id": ObjectId(owner_id)})
+    flash("Risk Owner Successfully Deleted")
+    return redirect(url_for("get_owners"))
 
 
 if __name__ == "__main__":
