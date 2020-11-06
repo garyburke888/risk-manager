@@ -4,13 +4,11 @@
     <div class="row">
         <div class="col s12 m8 offset-m2">
             <div class="card-panel">
-                <h3 class="center-align teal-text text-darken 1">Profile</h3>
+                <h3 class="center-align teal-text text-darken 1"><i class="fas fa-user prefix teal-text text-darken-1"></i> Profile</h3>
                 <h6>Username: <strong>{{ username }}</strong></h6>
-                <ul>
-                    <li>You can now view your Risk Register.</li>
-                    <li>Only users who created a Risk can edit or delete <u>that</u> Risk.</li>
-                    <li>Only Admin's can manage Risk Owners.</li>
-                </ul>
+                    <p>You can now view your <a href="{{ url_for('get_risks') }}" class="teal-text text-darken-1">Risk Register</a>.</p>
+                    <p>Only users who created a Risk can edit or delete that Risk.</p>
+                    <p>Only Admin's can manage Risk Owners.</p>
             </div>
         </div>
     </div>

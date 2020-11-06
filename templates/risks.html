@@ -95,7 +95,7 @@
                     <div class="col m8 s12">
                         {% if session.user|lower == risk.created_by|lower %}
                             <a href="{{ url_for('edit_risk', risk_id=risk._id )}}" class="waves-effect waves-light btn-small">Edit <i class="fas fa-edit prefix"></i></a>
-                            <a href="{{ url_for('delete_risk', risk_id=risk._id) }}" class="waves-effect waves-light btn-small">Delete <i class="fas fa-trash prefix"></i></a>
+                            <a href="{{ url_for('delete_risk', risk_id=risk._id) }}" class="waves-effect waves-light btn-small confirmation">Delete <i class="fas fa-trash prefix"></i></a>
                         {% endif %}
                     </div>
                 </div>
