@@ -155,6 +155,7 @@ def edit_risk(risk_id):
         }
         mongo.db.risks.update({"_id": ObjectId(risk_id)}, submit)
         flash("Risk Successfully Updated")
+        return redirect(url_for("get_risks"))
 
     risk = mongo.db.risks.find_one({"_id": ObjectId(risk_id)})
     owners = mongo.db.owners.find()

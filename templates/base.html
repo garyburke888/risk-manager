@@ -74,6 +74,7 @@
         {% endblock %}
     </main>
 
+    <!-- Footer -->
     <footer class="page-footer white">
         <div class="footer-copyright teal darken-1">
             <div class="container">
@@ -92,7 +93,7 @@
     <script type="text/javascript">
     var elems = document.getElementsByClassName('confirmation');
     var confirmIt = function (e) {
-        if (!confirm('Are you sure?')) e.preventDefault();
+        if (!confirm('Delete, are you sure?')) e.preventDefault();
     };
     for (var i = 0, l = elems.length; i < l; i++) {
         elems[i].addEventListener('click', confirmIt, false);
