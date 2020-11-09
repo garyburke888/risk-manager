@@ -7,7 +7,7 @@
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    <link rel="icon" href="static/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
     {% block styles %}
     {% endblock %}
     <title>eRisk</title>
@@ -73,6 +73,16 @@
         {% block content %}
         {% endblock %}
     </main>
+
+    <!-- Rating Guide Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <img src="/static/images/risk_matrix.png">
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="page-footer white">

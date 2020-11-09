@@ -47,7 +47,7 @@
                         <p>{{ risk.date_raised}}</p>
                         <h6 style="color:teal;"><i class="fas fa-user prefix teal-text text-darken-1"></i> Risk Owner:</h6>
                         <p>{{ risk.owner_name}}</p>
-                        <h6 style="color:teal;"><i class="fas fa-chevron-right prefix teal-text text-darken-1"></i> Likelihood:</h6>
+                        <h6 style="color:teal;"><i class="fas fa-chevron-right prefix teal-text text-darken-1"></i> Likelihood Rating:</h6>
                             {% if risk.likelihood_name == "Low" %}
                                 <p style="color:green;"><strong>{{ risk.likelihood_name}}</strong></p>
                             {% elif risk.likelihood_name == "Medium" %}
@@ -55,7 +55,7 @@
                             {% elif risk.likelihood_name == "High" %}
                                 <p style="color:red;"><strong>{{ risk.likelihood_name}}</strong></p>
                             {% endif %}
-                        <h6 style="color:teal;"><i class="fas fa-chevron-right prefix teal-text text-darken-1"></i> Impact:</h6>
+                        <h6 style="color:teal;"><i class="fas fa-chevron-right prefix teal-text text-darken-1"></i> Impact Rating:</h6>
                             {% if risk.impact_name == "Low" %}
                                 <p style="color:green;"><strong>{{ risk.impact_name}}</strong></p>
                             {% elif risk.impact_name == "Medium" %}
@@ -71,6 +71,8 @@
                             {% elif risk.rating_name == "High" %}
                                 <p style="color:red;"><strong>{{ risk.rating_name}}</strong></p>
                             {% endif %}
+                        <!-- Rating Guide Modal Trigger -->
+                        <a class="waves-effect waves-light btn-small modal-trigger" href="#modal1">Rating Guide</a>
                     </div>
                     <div class="col m8 s12">
                         <h6 style="color:teal;"><i class="fas fa-align-left prefix teal-text text-darken-1"></i> Description:</h6>

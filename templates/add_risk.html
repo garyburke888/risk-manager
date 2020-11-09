@@ -75,12 +75,12 @@
 				<div class="input-field col s12">
                     <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
 					<select id="likelihood_name" name="likelihood_name" class="validate" required>
-                        <option value="" disabled selected>Choose Likelihood</option>
+                        <option value="" disabled selected>Choose Likelihood Rating</option>
                         {% for likelihood in likelihoods %}
                             <option value="{{ likelihood.likelihood_name }}">{{ likelihood.likelihood_name }}</option>
                         {% endfor %}
                     </select>
-					<label for="likelihood_name">Risk Likelihood</label>
+					<label for="likelihood_name">Risk Likelihood Rating</label>
 				</div>
 			</div>
             
@@ -89,12 +89,12 @@
 				<div class="input-field col s12">
                     <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
 					<select id="impact_name" name="impact_name" class="validate" required>
-                        <option value="" disabled selected>Choose Impact</option>
+                        <option value="" disabled selected>Choose Impact Rating</option>
                         {% for impact in impacts %}
                             <option value="{{ impact.impact_name }}">{{ impact.impact_name }}</option>
                         {% endfor %}
                     </select>
-					<label for="impact_name">Risk Impact</label>
+					<label for="impact_name">Risk Impact Rating</label>
 				</div>
 			</div>
 
@@ -103,7 +103,7 @@
 				<div class="input-field col s12">
                     <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
 					<select id="rating_name" name="rating_name" class="validate" required>
-                        <option value="" disabled selected>Choose Rating</option>
+                        <option value="" disabled selected>Choose Overall Rating</option>
                         {% for rating in ratings %}
                             <option value="{{ rating.rating_name }}">{{ rating.rating_name }}</option>
                         {% endfor %}
@@ -111,6 +111,13 @@
 					<label for="rating_name">Overall Risk Rating</label>
 				</div>
 			</div>
+
+            <!-- Rating Guide Modal Trigger -->
+            <div class="row">
+                <div class="col s12">
+                    <a class="waves-effect waves-light btn-small modal-trigger" href="#modal1">Rating Guide</a>
+                </div>
+            </div>
 
             <!-- Date Raised Picker -->
             <div class="row">

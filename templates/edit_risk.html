@@ -87,7 +87,7 @@
 				<div class="input-field col s12">
                     <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
                         <select id="likelihood_name" name="likelihood_name" class="validate" required>
-                            <option value="" disabled>Choose Likelihood</option>
+                            <option value="" disabled>Choose Likelihood Rating</option>
                             {% for likelihood in likelihoods %}
                                 {% if likelihood.likelihood_name == risk.likelihood_name %}
                                     <option value="{{ likelihood.likelihood_name }}" selected>{{ likelihood.likelihood_name }}</option>
@@ -96,7 +96,7 @@
                                 {% endif %}
                             {% endfor %}
                         </select>
-					<label for="likelihood_name">Risk Likelihood</label>
+					<label for="likelihood_name">Risk Likelihood Rating</label>
 				</div>
 			</div>
 
@@ -105,7 +105,7 @@
 				<div class="input-field col s12">
                     <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
                         <select id="impact_name" name="impact_name" class="validate" required>
-                            <option value="" disabled>Choose Impact</option>
+                            <option value="" disabled>Choose Impact Rating</option>
                             {% for impact in impacts %}
                                 {% if impact.impact_name == risk.impact_name %}
                                     <option value="{{ impact.impact_name }}" selected>{{ impact.impact_name }}</option>
@@ -114,7 +114,7 @@
                                 {% endif %}
                             {% endfor %}
                         </select>
-					<label for="impact_name">Risk Impact</label>
+					<label for="impact_name">Risk Impact Rating</label>
 				</div>
 			</div>
 
@@ -123,7 +123,7 @@
 				<div class="input-field col s12">
                     <i class="fas fa-chevron-right prefix teal-text text-darken-1"></i>
                         <select id="rating_name" name="rating_name" class="validate" required>
-                            <option value="" disabled>Choose Rating</option>
+                            <option value="" disabled>Choose Overall Rating</option>
                             {% for rating in ratings %}
                                 {% if rating.rating_name == risk.rating_name %}
                                     <option value="{{ rating.rating_name }}" selected>{{ rating.rating_name }}</option>
@@ -132,9 +132,16 @@
                                 {% endif %}
                             {% endfor %}
                         </select>
-					<label for="rating_name">Risk Rating</label>
+					<label for="rating_name">Overall Risk Rating</label>
 				</div>
 			</div>
+
+            <!-- Rating Guide Modal Trigger -->
+            <div class="row">
+                <div class="col s12">
+                    <a class="waves-effect waves-light btn-small modal-trigger" href="#modal1">Rating Guide</a>
+                </div>
+            </div>
 
             <!-- Date Raised Picker -->
             <div class="row">

@@ -4,6 +4,7 @@
     $(".tooltipped").tooltip();
     $("select").formSelect();
     $("#secondDiv").insertBefore("#firstDiv");
+    $(".modal").modal();
     $(".datepicker").datepicker({
         format: "dd mmmm, yyyy",
         yearRange: 3,
