@@ -47,6 +47,7 @@
                         <p>{{ risk.date_raised}}</p>
                         <h6 style="color:teal;"><i class="fas fa-user prefix teal-text text-darken-1"></i> Risk Owner:</h6>
                         <p>{{ risk.owner_name}}</p>
+                        <!-- Colour Coded Rating Options-->
                         <h6 style="color:teal;"><i class="fas fa-chevron-right prefix teal-text text-darken-1"></i> Likelihood Rating:</h6>
                             {% if risk.likelihood_name == "Low" %}
                                 <p style="color:green;"><strong>{{ risk.likelihood_name}}</strong></p>
@@ -97,11 +98,9 @@
                     <div class="col m4 s12">
                         <p><em>Added by: {{ risk.created_by }}</em></p>
                     </div>
+                    <!-- Edit & Delete Buttons-->
                     <div class="col m8 s12">
-                        {% if session.user|lower == risk.created_by|lower %}
-                            <a href="{{ url_for('edit_risk', risk_id=risk._id )}}" class="waves-effect waves-light btn-small">Edit <i class="fas fa-edit prefix"></i></a>
-                            <a href="{{ url_for('delete_risk', risk_id=risk._id) }}" class="waves-effect waves-light btn-small confirmation">Delete <i class="fas fa-trash prefix"></i></a>
-                        {% elif session.user|lower == "admin"|lower %}
+                        {% if session.user|lower == risk.created_by|lower or session.user|lower == "admin"|lower %}
                             <a href="{{ url_for('edit_risk', risk_id=risk._id )}}" class="waves-effect waves-light btn-small">Edit <i class="fas fa-edit prefix"></i></a>
                             <a href="{{ url_for('delete_risk', risk_id=risk._id) }}" class="waves-effect waves-light btn-small confirmation">Delete <i class="fas fa-trash prefix"></i></a>
                         {% endif %}

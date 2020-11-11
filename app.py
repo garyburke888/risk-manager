@@ -40,7 +40,7 @@ def search():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        # check if username already exists in db
+        # check if username already exists in database
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -65,7 +65,7 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        # check if username exists in db
+        # check if username exists in database
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -73,11 +73,11 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(
-                            request.form.get("username")))
-                        return redirect(url_for(
-                            "profile", username=session["user"]))
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -93,7 +93,7 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab the session user's username from db
+    # grab the session user's username from database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
@@ -137,7 +137,10 @@ def add_risk():
     likelihoods = mongo.db.likelihoods.find()
     impacts = mongo.db.impacts.find()
     ratings = mongo.db.ratings.find()
-    return render_template("add_risk.html", owners=owners, likelihoods=likelihoods, impacts=impacts, ratings=ratings)
+    return render_template(
+        "add_risk.html", owners=owners,
+        likelihoods=likelihoods, impacts=impacts,
+        ratings=ratings)
 
 
 @app.route("/edit_risk/<risk_id>", methods=["GET", "POST"])
@@ -167,7 +170,10 @@ def edit_risk(risk_id):
     likelihoods = mongo.db.likelihoods.find()
     impacts = mongo.db.impacts.find()
     ratings = mongo.db.ratings.find()
-    return render_template("edit_risk.html", risk=risk, owners=owners, likelihoods=likelihoods, impacts=impacts, ratings=ratings)
+    return render_template(
+        "edit_risk.html", risk=risk, owners=owners,
+        likelihoods=likelihoods, impacts=impacts,
+        ratings=ratings)
 
 
 @app.route("/delete_risk/<risk_id>")

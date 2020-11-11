@@ -6,7 +6,7 @@
     <div class="row class= card-panel grey lighten-5">
         <form class="col s12" method="POST" action="{{ url_for('edit_risk', risk_id=risk._id) }}">
             
-            <!-- risk name -->
+            <!-- Risk Name -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-tag prefix teal-text text-darken-1"></i>
@@ -178,7 +178,7 @@
                     <button type="submit" class="waves-effect waves-light btn-small">
                         Edit <i class="fas fa-edit right"></i>
                     </button>
-                    <!-- cancel button -->
+                    <!-- Cancel Button -->
                     <a href="{{ url_for('get_risks') }}" class="waves-effect waves-light btn-small">
                         Cancel <i class="fas fa-times-circle right"></i>
                     </a>

@@ -19,7 +19,7 @@
         <!-- Top Navbar -->
         <nav class="nav-extended text-shadow teal darken-1">
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_risks') }}" class="brand-logo">eRisk</a>
+                <a href="{{ url_for('index') }}" class="brand-logo">eRisk</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     {% if session.user %}
@@ -69,6 +69,7 @@
         {% endwith %}
     </section>
 
+    <!-- Main Content -->
     <main class="container">
         {% block content %}
         {% endblock %}
@@ -79,9 +80,6 @@
         <div class="modal-content">
             <img src="/static/images/risk_matrix.png">
         </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
     </div>
 
     <!-- Footer -->
@@ -89,7 +87,7 @@
         <div class="footer-copyright teal darken-1">
             <div class="container">
             © 2020 Gary Burke
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <a class="grey-text text-lighten-4 right" href="#!">eBusiness Suite</a>
             </div>
         </div>
     </footer>
