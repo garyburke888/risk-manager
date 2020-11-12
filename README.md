@@ -1,8 +1,8 @@
-<h1 align="center">Code Institute Website</h1>
+<h1 align="center">eRisk</h1>
 
-[View the live project here.](https://codeinstitute.net)
+[View the live app here.](http://flask-risk-manager-project.herokuapp.com/)
 
-This is the main marketing website for Code Institute. It is designed to be responsibe and accessible on a range of devices, making it easy to navigate for potential students and partners.
+This a Risk Management app primarily aimed at Project Management but appropriate for use by corporations, organisations and individuals alike.
 
 <h2 align="center"><img src="https://i.ibb.co/TYvTXz1/Example-CI.png"></h2>
 
@@ -10,72 +10,78 @@ This is the main marketing website for Code Institute. It is designed to be resp
 
 -   ### User stories
 
-    -   #### First Time Visitor Goals
+    -   #### First Time User Goals
 
-        1. As a First Time Visitor, I want to easily understand the main purpose of the site and learn more about the organisation.
-        2. As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
-        3. As a First Time Visitor, I want to look for testimonials to understand what their users think of them and see if they are trusted. I also want to locate their social media links to see their followings on social media to determine how trusted and known they are.
+        1. As a First Time User, I want to see the app meets my needs or those of my organisation.
+        2. As a First Time User, I want to easily navigate throughout the app to find content.
 
-    -   #### Returning Visitor Goals
+    -   #### Returning User Goals
 
-        1. As a Returning Visitor, I want to find information about coding challenges.
-        2. As a Returning Visitor, I want to find the best way to get in contact with the organisation with any questions I may have.
-        3. As a Returning Visitor, I want to find community links.
+        1. As a Returning User, I want to create and read Risks.
+        2. As a Returning User, I want to share my Risk Register with oher members of my team.
 
     -   #### Frequent User Goals
-        1. As a Frequent User, I want to check to see if there are any newly added challenges or hackathons.
-        2. As a Frequent User, I want to check to see if there are any new blog posts.
-        3. As a Frequent User, I want to sign up to the Newsletter so that I am emailed any major updates and/or changes to the website or organisation.
+        1. As a Frequent User, I want to update and delete Risks.
+        2. As a Frequent User, I want to add and delete Risk Owners.
 
 -   ### Design
     -   #### Colour Scheme
-        -   The two main colours used are Code Insititue red, and white.
+        -   The two main colours used are teal and white.
     -   #### Typography
-        -   The Montserrat font is the main font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly. Montserrat is a clean font used frequently in programming, so it is both attractive and appropriate.
+        -   Roboto 2.0 is the standard font used by the Materialize framework which is utilised by this app.
     -   #### Imagery
-        -   Imagery is important. The large, background hero image is designed to be striking and catch the user's attention. It also has a modern, energetic aesthetic.
+        -   There is little imagery used in the app, just a favicon and a risk matrix to help users compile ratings.
 
 *   ### Wireframes
 
-    -   Home Page Wireframe - [View](https://github.com/)
-
-    -   Mobile Wireframe - [View](https://github.com/)
-
-    -   Contact Us Page Wireframe - [View](https://github.com/)
+    -   Login Wireframe - [View](#)
+    -   Risk register Wireframe - [View](#)
+    -   Edit Risk Wireframe - [View](#)
+    -   Risk Owners Wireframe - [View](#)
 
 ## Features
 
--   Responsive on all device sizes
-
--   Interactive elements
+-   Responsive on all device sizes.
+-   User registration, login & logout.
+-   Create, read, update and delete functionality.
+-   Search functionality.
+-   Confirm delete functionality.
+-   Materialize Collapsible Risk Register.
+-   Risk Rating Guide modal.
+-   Mobile collapse nav bar.
 
 ## Technologies Used
 
+-   HTML
+-   CSS
+-   JavaScript
+-   Python
+-   Flask
+-   Github
+-   Gitpod
+-   MongoDB
+-   herokuapp
+-   MaterializeCSS
+-   Werkzeug
+
 ### Languages Used
 
--   [HTML5](https://en.wikipedia.org/wiki/HTML5)
--   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+-   [HTML](https://en.wikipedia.org/wiki/HTML5)
+-   [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+-   [JavaScript](https://www.javascript.com/)
+-   [Python](https://www.python.org/)
 
 ### Frameworks, Libraries & Programs Used
 
-1. [Bootstrap 4.4.1:](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
-    - Bootstrap was used to assist with the responsiveness and styling of the website.
-1. [Hover.css:](https://ianlunn.github.io/Hover/)
-    - Hover.css was used on the Social Media icons in the footer to add the float transition while being hovered over.
-1. [Google Fonts:](https://fonts.google.com/)
-    - Google fonts were used to import the 'Titillium Web' font into the style.css file which is used on all pages throughout the project.
-1. [Font Awesome:](https://fontawesome.com/)
-    - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
-1. [jQuery:](https://jquery.com/)
-    - jQuery came with Bootstrap to make the navbar responsive but was also used for the smooth scroll function in JavaScript.
-1. [Git](https://git-scm.com/)
-    - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
-1. [GitHub:](https://github.com/)
-    - GitHub is used to store the projects code after being pushed from Git.
-1. [Photoshop:](https://www.adobe.com/ie/products/photoshop.html)
-    - Photoshop was used to create the logo, resizing images and editing photos for the website.
-1. [Balsamiq:](https://balsamiq.com/)
-    - Balsamiq was used to create the [wireframes](https://github.com/) during the design process.
+-   [Flask](https://flask.palletsprojects.com/)
+-   [Materialize](https://materializecss.com/)
+-   [Font Awesome](https://fontawesome.com/)
+-   [jQuery](https://jquery.com/)
+-   [Git](https://git-scm.com/)
+-   [GitHub](https://github.com/)
+-   [Gitpod](https://gitpod.io/)
+-   [MongoDB](https://www.mongodb.com/)
+-   [Werkzeug](https://werkzeug.palletsprojects.com/)
 
 ## Testing
 

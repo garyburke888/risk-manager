@@ -1,3 +1,6 @@
+"""Make code available"""
+
+
 import os
 from flask import (
     Flask, flash, render_template,
@@ -9,7 +12,11 @@ if os.path.exists("env.py"):
     import env
 
 
+"""Create an instance of the Flask class and set environmental variables"""
+
+
 app = Flask(__name__)
+
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -18,10 +25,16 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+"""Map & Define Index Page Route"""
+
+
 @app.route("/")
 @app.route("/index")
 def index():
     return render_template("index.html")
+
+
+"""Risk Register"""
 
 
 @app.route("/get_risks")
@@ -30,11 +43,17 @@ def get_risks():
     return render_template("risks.html", risks=risks)
 
 
+"""Search function on Risk Register page, indexes are set within MongoDB"""
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
     risks = list(mongo.db.risks.find({"$text": {"$search": query}}))
     return render_template("risks.html", risks=risks)
+
+
+"""Register a new user"""
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -60,6 +79,9 @@ def register():
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
+
+
+"""User Login"""
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -91,6 +113,9 @@ def login():
     return render_template("login.html")
 
 
+"""User profile"""
+
+
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from database
@@ -103,12 +128,18 @@ def profile(username):
     return render_template("profile.html", username=username)
 
 
+"""User logout"""
+
+
 @app.route("/logout")
 def logout():
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("index"))
+
+
+"""Add a new risk"""
 
 
 @app.route("/add_risk", methods=["GET", "POST"])
@@ -141,6 +172,9 @@ def add_risk():
         "add_risk.html", owners=owners,
         likelihoods=likelihoods, impacts=impacts,
         ratings=ratings)
+
+
+"""Edit a Risk"""
 
 
 @app.route("/edit_risk/<risk_id>", methods=["GET", "POST"])
@@ -176,6 +210,9 @@ def edit_risk(risk_id):
         ratings=ratings)
 
 
+"""Delete a Risk"""
+
+
 @app.route("/delete_risk/<risk_id>")
 def delete_risk(risk_id):
     mongo.db.risks.remove({"_id": ObjectId(risk_id)})
@@ -183,10 +220,16 @@ def delete_risk(risk_id):
     return redirect(url_for("get_risks"))
 
 
+"""View Risk Owners"""
+
+
 @app.route("/get_owners")
 def get_owners():
     owners = list(mongo.db.owners.find().sort("owner_name", 1))
     return render_template("owners.html", owners=owners)
+
+
+"""Add a new Risk Owner"""
 
 
 @app.route("/add_owner", methods=["GET", "POST"])
@@ -200,6 +243,9 @@ def add_owner():
         return redirect(url_for("get_owners"))
 
     return render_template("add_owner.html")
+
+
+"""Edit a Risk Owner"""
 
 
 @app.route("/edit_owner/<owner_id>", methods=["GET", "POST"])
@@ -216,11 +262,17 @@ def edit_owner(owner_id):
     return render_template("edit_owner.html", owner=owner)
 
 
+"""Delete a Risk Owner"""
+
+
 @app.route("/delete_owner/<owner_id>")
 def delete_owner(owner_id):
     mongo.db.owners.remove({"_id": ObjectId(owner_id)})
     flash("Risk Owner Successfully Deleted")
     return redirect(url_for("get_owners"))
+
+
+"""Execute script, satisfy conditional statement and run app"""
 
 
 if __name__ == "__main__":
