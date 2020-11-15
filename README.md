@@ -1,43 +1,43 @@
-<h1 align="center">eRisk</h1>
+# eRisk
+
+![eRisk Responsive Design](/static/images/erisk_multi.png)
 
 [View the live app here.](http://flask-risk-manager-project.herokuapp.com/)
 
-This a Risk Management app primarily aimed at Project Management but appropriate for use by corporations, organisations and individuals alike.
-
-<h2 align="center"><img src="https://i.ibb.co/TYvTXz1/Example-CI.png"></h2>
+**eRisk** a 'Risk Management' app primarily aimed at 'Project Management' but appropriate for use by corporations, organisations and individuals alike. The app requests that all users register and login to view the 'Risk Register' associated with their particular project. Once logged in the user can then create, read, update and delete their 'Risks'. In line with current 'Risk Management' process each 'Risk' contains the following editable fields: Risk Name, Risk Description, Risk Owner, Likelihood Rating, Impact Rating, Overall Rating, Mitigating Action, Contingent Action, Progress on Actions, Date Raised and Risk Status. The app is optimized for use on phones and tablets.
 
 ## User Experience (UX)
 
--   ### User stories
+### User stories
+-   #### First Time User Goals
+    1. As a first time user, I want to see that the app meets my needs or those of my organisation.
+    2. As a first time user, I want to easily navigate throughout the app to find content.
+    3. As a first time user, I want to see that I can quickly and easily input relevant information.
+-   #### Returning User Goals
+    1. As a returning user, I want to create and read Risks.
+    2. As a returning user, I want to share my Risks with other members of my team.
+    3. As a returning user, I want help rating Risks.
+-   #### Frequent User Goals
+    1. As a frequent user, I want to update and delete Risks.
+    2. As a frequent user, I want to create and manage Risk Owners.
+    3. As a frequent user, I want to view and manage the status of Risks.
+-   #### Owner Goals
+    1. As the app owner, I want to provide a clean and easy-to-use app that appeals to a certain market.
+    2. As the app owner, I want to ensure the app provides industry-standard functionality.
+    3. As the app owner, I want to sell other apps to users.
 
-    -   #### First Time User Goals
+### Design
+-   #### Colour Scheme
+    -   The two main colours used are teal and white.
+-   #### Typography
+    -   Roboto 2.0 is the standard font used by the Materialize framework, which is utilised by this app.
+-   #### Imagery
+    -   There is little imagery used in the app, just a favicon and a popup risk matrix - to help users compile ratings.
 
-        1. As a First Time User, I want to see the app meets my needs or those of my organisation.
-        2. As a First Time User, I want to easily navigate throughout the app to find content.
+### Wireframes
 
-    -   #### Returning User Goals
-
-        1. As a Returning User, I want to create and read Risks.
-        2. As a Returning User, I want to share my Risk Register with oher members of my team.
-
-    -   #### Frequent User Goals
-        1. As a Frequent User, I want to update and delete Risks.
-        2. As a Frequent User, I want to add and delete Risk Owners.
-
--   ### Design
-    -   #### Colour Scheme
-        -   The two main colours used are teal and white.
-    -   #### Typography
-        -   Roboto 2.0 is the standard font used by the Materialize framework which is utilised by this app.
-    -   #### Imagery
-        -   There is little imagery used in the app, just a favicon and a risk matrix to help users compile ratings.
-
-*   ### Wireframes
-
-    -   Login Wireframe - [View](#)
-    -   Risk register Wireframe - [View](#)
-    -   Edit Risk Wireframe - [View](#)
-    -   Risk Owners Wireframe - [View](#)
+![eRisk Wireframes](/static/images/erisk_wireframe_1.png)
+![eRisk Wireframes](/static/images/erisk_wireframe_2.png)
 
 ## Features
 
@@ -49,186 +49,146 @@ This a Risk Management app primarily aimed at Project Management but appropriate
 -   Materialize Collapsible Risk Register.
 -   Risk Rating Guide modal.
 -   Mobile collapse nav bar.
+-   Different user permissions (Admin/User)
+
+![eRisk Index / Login / Register / Profile](/static/images/erisk_screenshots_1.png)
+![eRisk Add / Edit / Matrix](/static/images/erisk_screenshots_2.png)
+![eRisk Delete / Owners](/static/images/erisk_screenshots_3.png)
 
 ## Technologies Used
 
--   HTML
--   CSS
--   JavaScript
--   Python
--   Flask
--   Github
--   Gitpod
--   MongoDB
--   herokuapp
--   MaterializeCSS
--   Werkzeug
+### Languages
 
-### Languages Used
-
--   [HTML](https://en.wikipedia.org/wiki/HTML5)
--   [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+-   [HTML](https://www.w3schools.com/html/)
+-   [CSS](https://www.w3schools.com/css/)
 -   [JavaScript](https://www.javascript.com/)
 -   [Python](https://www.python.org/)
 
-### Frameworks, Libraries & Programs Used
+### Frameworks, Libraries & Programs
 
 -   [Flask](https://flask.palletsprojects.com/)
+    - Flask was used to develop the app.
 -   [Materialize](https://materializecss.com/)
+    - Materialize was used to assist with the responsiveness and styling of the website.
 -   [Font Awesome](https://fontawesome.com/)
+    - Font Awesome icons are used throughout the app.
 -   [jQuery](https://jquery.com/)
+    - jQuery was used in conjunction with Materialize to initialise components.
 -   [Git](https://git-scm.com/)
+    - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub & Heroku.
 -   [GitHub](https://github.com/)
--   [Gitpod](https://gitpod.io/)
+    - GitHub is used to store the projects code after being pushed from Git.
 -   [MongoDB](https://www.mongodb.com/)
+    - MongoDB was the database chosen for use with this app.
 -   [Werkzeug](https://werkzeug.palletsprojects.com/)
+    - Werkzeug was used for its generate and check password hash functionality.
 
 ## Testing
 
-The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
-
--   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://github.com/)
--   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://github.com/)
+### Code
+-   The W3C Markup & CSS Validators [here](https://validator.w3.org/) were used to ensure there were no critical syntax errors in the project.
+-   The PEP8 online checker [here](http://pep8online.com/) was used to check Python code for PEP8 requirements.
 
 ### Testing User Stories from User Experience (UX) Section
 
 -   #### First Time Visitor Goals
 
-    1. As a First Time Visitor, I want to easily understand the main purpose of the site and learn more about the organisation.
+    1. As a first time user, I want to see that the app meets my needs or those of my organisation.
 
-        1. Upon entering the site, users are automatically greeted with a clean and easily readable navigation bar to go to the page of their choice. Underneath there is a Hero Image with Text and a "Learn More" Call to action button.
-        2. The main points are made immediately with the hero image
-        3. The user has two options, click the call to action buttons or scroll down, both of which will lead to the same place, to learn more about the organisation.
+        1. The full workings of the app are apparent from first time use.
+        2. The minimalist design allows users to quickly 'Register'/'Login' and see what the 'Risk Register' contains and how to edit or add to it.
+        3. The 'Profile' page gives information on user permissions with regards to create, read, update and delete rights.
 
-    2. As a First Time Visitor, I want to be able to easily be able to navigate throughout the site to find content.
+    2. As a first time user, I want to easily navigate throughout the app to find content.
 
-        1. The site has been designed to be fluid and never to entrap the user. At the top of each page there is a clean navigation bar, each link describes what the page they will end up at clearly.
-        2. At the bottom of the first 3 pages there is a redirection call to action to ensure the user always has somewhere to go and doesn't feel trapped as they get to the bottom of the page.
-        3. On the Contact Us Page, after a form response is submitted, the page refreshes and the user is brought to the top of the page where the navigation bar is.
+        1. The app has been designed to be minimalist, with concise information and as few links as possible. 
+        2. The 'Risk Register' itself appears as a collapsible list as each 'Risk' contains a lot of information, all of which is industry standard.
+        3. The user permissions are slightly different for 'admin' as compared to a regular user and with this in mind, 'Risk Owner' links don't appear for regular users. (to test this, login as 'admin' with password 'adminpassword')
 
-    3. As a First Time Visitor, I want to look for testimonials to understand what their users think of them and see if they are trusted. I also want to locate their social media links to see their following on social media to determine how trusted and known they are.
-        1. Once the new visitor has read the About Us and What We Do text, they will notice the Why We are Loved So Much section.
-        2. The user can also scroll to the bottom of any page on the site to locate social media links in the footer.
-        3. At the bottom of the Contact Us page, the user is told underneath the form, that alternatively they can contact the organisation on social media which highlights the links to them.
+    3. As a first time user, I want to see that I can quickly and easily input relevant information.
+        1. The 'Login' and 'Register' pages only contain 2 input fields.
+        2. The 'Add Risk' link is in the main menu.
+        3. The 'Add Owner' link is in the main menu for admin. (to test this, login as 'admin' with password 'adminpassword')
 
 -   #### Returning Visitor Goals
 
-    1. As a Returning Visitor, I want to find the new programming challenges or hackathons.
+    1. As a returning user, I want to create and read Risks.
 
-        1. These are clearly shown in the banner message.
-        2. They will be directed to a page with another hero image and call to action.
+        1. The 'Add Risk' link is in the main menu for all users.
+        2. The 'Risk Register' link is in the main menu for all users.
+        3. The 'Risk Register' is a collapsible list, all information on a 'Risk' can be viewed by clicking the 'Risk' title.
 
-    2. As a Returning Visitor, I want to find the best way to get in contact with the organisation with any questions I may have.
+    2. As a returning user, I want to share my 'Risks' with other members of my team.
 
-        1. The navigation bar clearly highlights the "Contact Us" Page.
-        2. Here they can fill out the form on the page or are told that alternatively they can message the organisation on social media.
-        3. The footer contains links to the organisations Facebook, Twitter and Instagram page as well as the organization's email.
-        4. Whichever link they click, it will be open up in a new tab to ensure the user can easily get back to the website.
-        5. The email button is set up to automatically open up your email app and autofill there email address in the "To" section.
+        1. There is no limit to how many users can register, login and view the 'Risk Register'.
+        2. All 'Risks' are visible the whole team.
+        3. 'Risks' can only be edited or deleted by the user who created them, or by admin.
 
-    3. As a Returning Visitor, I want to find the Facebook Group link so that I can join and interact with others in the community.
-        1. The Facebook Page can be found at the footer of every page and will open a new tab for the user and more information can be found on the Facebook page.
-        2. Alternatively, the user can scroll to the bottom of the Home page to find the Facebook Group redirect card and can easily join by clicking the "Join Now!" button which like any external link, will open in a new tab to ensure they can get back to the website easily.
-        3. If the user is on the "Our Favourites" page they will also be greeted with a call to action button to invite the user to the Facebook group. The user is incentivized as they are told there is a weekly favourite product posted in the group.
+    3. As a returning user, I want help rating Risks.
+        1. Each 'Risk Rating' (Likelihood, Impact & Overall) is colour coded for Low, Medium and High.
+        2. The 'Add Risk' form contains a popup 'Risk Matrix' to help users make more precise ratings.
+        3. The 'Edit Risk' form contains the same popup.
 
 -   #### Frequent User Goals
 
-    1. As a Frequent User, I want to check to see if there are any newly added challenges or hackathons.
+    1. As a frequent user, I want to update and delete Risks.
 
-        1. The user would already be comfortable with the website layout and can easily click the banner message.
+        1. The 'Edit' and 'Delete' button links are visible within each 'Risk'. 
+        2. 'Risks' can only be edited or deleted by the user who created them, or by admin.
+        3. To delete a 'Risk' the user will be prompted to confirm they wish to do so.
 
-    2. As a Frequent User, I want to check to see if there are any new blog posts.
+    2. As a frequent user, I want to create and manage Risk Owners.
 
-        1. The user would already be comfortable with the website layout and can easily click the blog link
+        1. The 'Manage Owners' link is only visible to admin.
+        2. The 'Add Owner', 'Delete Owner' & 'Edit Owner' button links are only visible to admin. 
+        3. To delete a 'Risk Owner' the user will be prompted to confirm they wish to do so.
 
-    3. As a Frequent User, I want to sign up to the Newsletter so that I am emailed any major updates and/or changes to the website or organisation.
-        1. At the bottom of every page their is a footer which content is consistent throughout all pages.
-        2. To the right hand side of the footer the user can see "Subscribe to our Newsletter" and are prompted to Enter their email address.
-        3. There is a "Submit" button to the right hand side of the input field which is located close to the field and can easily be distinguished.
+    3. As a frequent user, I want to view and manage the status of Risks.
+
+        1. 'Risk Status' can be changed from within the 'Edit Risk' form, via a Materialize switch.
+        2. 'Risk Status' is quickly visible through locked/unlocked icons beside each 'Risk' in the 'Risk Register'.
+        3. These icons are tool-tipped to state if a 'Risk Status' is open or closed.
+
+-   #### Owner Goals
+
+    1. As the app owner, I want to provide a clean and easy-to-use app that appeals to a certain market.
+        -   The app has been designed to be minimalist, with concise information and as few links as possible.
+    2. As the app owner, I want to ensure the app provides industry-standard functionality.
+        -   The 'Risk Register' contains industry-standard fields and information.
+    3. As the app owner, I want to sell other apps to users.
+        -   The footer contains a link which can be used to take the user to advertisements for other apps that they might be interested in.
 
 ### Further Testing
 
--   The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers.
--   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone7, iPhone 8 & iPhoneX.
--   A large amount of testing was done to ensure that all pages were linking correctly.
+-   The Website was tested on Google Chrome, Opera, Microsoft Edge and Safari browsers.
+-   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone.
+-   A large amount of testing was done to ensure there were no broken links.
 -   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
 
 ### Known Bugs
 
--   On some mobile devices the Hero Image pushes the size of screen out more than any of the other content on the page.
-    -   A white gap can be seen to the right of the footer and navigation bar as a result.
--   On Microsoft Edge and Internet Explorer Browsers, all links in Navbar are pushed upwards when hovering over them.
+-   Despite requesting that a user registers and logs in, any page is visible in the browser by copying and pasting the full web address.
+-   The 'Risk Matrix' modal appears with a scrollbar on tighter landscape screens, which is not optimal.
 
 ## Deployment
 
-### GitHub Pages
+### Heroku
 
-The project was deployed to GitHub Pages using the following steps...
+The project was deployed to Heroku using the following steps;
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
-2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
-    - Alternatively Click [Here](https://raw.githubusercontent.com/) for a GIF demonstrating the process starting from Step 2.
-3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
-4. Under "Source", click the dropdown called "None" and select "Master Branch".
-5. The page will automatically refresh.
-6. Scroll back down through the page to locate the now published site [link](https://github.com) in the "GitHub Pages" section.
-
-### Forking the GitHub Repository
-
-By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
-
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
-2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
-3. You should now have a copy of the original repository in your GitHub account.
-
-### Making a Local Clone
-
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
-2. Under the repository name, click "Clone or download".
-3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
-4. Open Git Bash
-5. Change the current working directory to the location where you want the cloned directory to be made.
-6. Type `git clone`, and then paste the URL you copied in Step 3.
-
-```
-$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
-```
-
-7. Press Enter. Your local clone will be created.
-
-```
-$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
-> Cloning into `CI-Clone`...
-> remote: Counting objects: 10, done.
-> remote: Compressing objects: 100% (8/8), done.
-> remove: Total 10 (delta 1), reused 10 (delta 1)
-> Unpacking objects: 100% (10/10), done.
-```
-
-Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
+1. ???
 
 ## Credits
 
-### Code
+### Tutorial
+-   This app was built in conjunction with The Code Institute 'Data Centric Development' module.
 
--   The full-screen hero image code came from this [StackOverflow post](https://stackoverflow.com)
-
--   [Bootstrap4](https://getbootstrap.com/docs/4.4/getting-started/introduction/): Bootstrap Library used throughout the project mainly to make site responsive using the Bootstrap Grid System.
-
--   [MDN Web Docs](https://developer.mozilla.org/) : For Pattern Validation code. Code was modified to better fit my needs and to match an Irish phone number layout to ensure correct validation. Tutorial Found [Here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel#Pattern_validation)
-
-### Content
-
--   All content was written by the developer.
-
--   Psychological properties of colours text in the README.md was found [here](http://www.colour-affects.co.uk/psychological-properties-of-colours)
-
-### Media
-
--   All Images were created by the developer.
+### Code & Content
+-   [Am I Responsive?](http://ami.responsivedesign.is/) - Used to obtain README image of app on various screens.
+-   [Materialize](https://materializecss.com/) - Used throughout the project mainly for responsive navigation and the collapsible list components.
 
 ### Acknowledgements
 
--   My Mentor for continuous helpful feedback.
-
--   Tutor support at Code Institute for their support.
+-   Mentor - Gerry McBride
+-   Tutor Support - Code Institute
+-   Developer - Gary Burke
