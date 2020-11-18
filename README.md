@@ -4,14 +4,14 @@
 
 [View the live app here.](http://flask-risk-manager-project.herokuapp.com/)
 
-**eRisk** a 'Risk Management' app primarily aimed at 'Project Management' but appropriate for use by corporations, organisations and individuals alike. The app requests that all users register and login to view the 'Risk Register' associated with their particular project. Once logged in the user can then create, read, update and delete their 'Risks'. In line with current 'Risk Management' process each 'Risk' contains the following editable fields: Risk Name, Risk Description, Risk Owner, Likelihood Rating, Impact Rating, Overall Rating, Mitigating Action, Contingent Action, Progress on Actions, Date Raised and Risk Status. The app is optimized for use on phones and tablets.
+**eRisk** is a 'Risk Management' app primarily aimed at 'Project Management' but appropriate for use by corporations, organisations and individuals alike. The app requests that all users register and login to view the 'Risk Register' associated with their particular project. Once logged in the user can then create, read, update and delete their 'Risks'. In line with standard 'Risk Management' process, each 'Risk' contains the following editable fields: Risk Name, Risk Description, Risk Owner, Likelihood Rating, Impact Rating, Overall Rating, Mitigating Action, Contingent Action, Progress on Actions, Date Raised and Risk Status. The app is optimized for use on phones and tablets.
 
 ## User Experience (UX)
 
 ### User stories
 -   #### First Time User Goals
     1. As a first time user, I want to see that the app meets my needs or those of my organisation.
-    2. As a first time user, I want to easily navigate throughout the app to find content.
+    2. As a first time user, I want to easily navigate through the app to find content.
     3. As a first time user, I want to see that I can quickly and easily input relevant information.
 -   #### Returning User Goals
     1. As a returning user, I want to create and read Risks.
@@ -38,6 +38,7 @@
 
 ![eRisk Wireframes](/static/images/erisk_wireframe_1.png)
 ![eRisk Wireframes](/static/images/erisk_wireframe_2.png)
+![eRisk Wireframes](/static/images/erisk_wireframe_3.png)
 
 ## Features
 
@@ -69,7 +70,7 @@
 -   [Flask](https://flask.palletsprojects.com/)
     - Flask was used to develop the app.
 -   [Materialize](https://materializecss.com/)
-    - Materialize was used to assist with the responsiveness and styling of the website.
+    - Materialize was used to assist with the responsiveness and styling of the app.
 -   [Font Awesome](https://fontawesome.com/)
     - Font Awesome icons are used throughout the app.
 -   [jQuery](https://jquery.com/)
@@ -99,16 +100,18 @@
         2. The minimalist design allows users to quickly 'Register'/'Login' and see what the 'Risk Register' contains and how to edit or add to it.
         3. The 'Profile' page gives information on user permissions with regards to create, read, update and delete rights.
 
-    2. As a first time user, I want to easily navigate throughout the app to find content.
+    2. As a first time user, I want to easily navigate through the app to find content.
 
         1. The app has been designed to be minimalist, with concise information and as few links as possible. 
-        2. The 'Risk Register' itself appears as a collapsible list as each 'Risk' contains a lot of information, all of which is industry standard.
-        3. The user permissions are slightly different for 'admin' as compared to a regular user and with this in mind, 'Risk Owner' links don't appear for regular users. (to test this, login as 'admin' with password 'adminpassword')
+        2. The 'Risk Register' itself appears as a collapsible list as each 'Risk' contains a lot of information.
+        3. The user permissions are slightly different for 'admin' as compared to a regular user and with this in mind, 'Risk Owner' links don't appear for regular users.
+            -   (to test this, login as 'admin' with password 'adminpassword').
 
     3. As a first time user, I want to see that I can quickly and easily input relevant information.
         1. The 'Login' and 'Register' pages only contain 2 input fields.
         2. The 'Add Risk' link is in the main menu.
-        3. The 'Add Owner' link is in the main menu for admin. (to test this, login as 'admin' with password 'adminpassword')
+        3. The 'Add Owner' link is in the main menu for admin.
+            -   (to test this, login as 'admin' with password 'adminpassword').
 
 -   #### Returning Visitor Goals
 
@@ -123,9 +126,10 @@
         1. There is no limit to how many users can register, login and view the 'Risk Register'.
         2. All 'Risks' are visible the whole team.
         3. 'Risks' can only be edited or deleted by the user who created them, or by admin.
+            -   (to test this, login as 'admin' with password 'adminpassword').
 
     3. As a returning user, I want help rating Risks.
-        1. Each 'Risk Rating' (Likelihood, Impact & Overall) is colour coded for Low, Medium and High.
+        1. Each 'Risk Rating' (Likelihood, Impact & Overall) is colour coded for Low (Green), Medium (Orange) and High (Red).
         2. The 'Add Risk' form contains a popup 'Risk Matrix' to help users make more precise ratings.
         3. The 'Edit Risk' form contains the same popup.
 
@@ -135,12 +139,15 @@
 
         1. The 'Edit' and 'Delete' button links are visible within each 'Risk'. 
         2. 'Risks' can only be edited or deleted by the user who created them, or by admin.
+            -   (to test this, login as 'admin' with password 'adminpassword').
         3. To delete a 'Risk' the user will be prompted to confirm they wish to do so.
 
     2. As a frequent user, I want to create and manage Risk Owners.
 
         1. The 'Manage Owners' link is only visible to admin.
-        2. The 'Add Owner', 'Delete Owner' & 'Edit Owner' button links are only visible to admin. 
+            -   (to test this, login as 'admin' with password 'adminpassword').
+        2. The 'Add Owner', 'Delete Owner' & 'Edit Owner' button links are only visible to admin.
+            -   (to test this, login as 'admin' with password 'adminpassword').
         3. To delete a 'Risk Owner' the user will be prompted to confirm they wish to do so.
 
     3. As a frequent user, I want to view and manage the status of Risks.
@@ -160,15 +167,17 @@
 
 ### Further Testing
 
--   The Website was tested on Google Chrome, Opera, Microsoft Edge and Safari browsers.
--   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone.
--   A large amount of testing was done to ensure there were no broken links.
--   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
+-   The app was tested on Google Chrome, Opera, Microsoft Edge and Safari browsers.
+-   The app was viewed on a variety of devices such as Desktop, Laptop, iPhone.
+-   Testing was done to ensure there were no broken links.
+-   Co-workers, friends and family members were asked to review the app to point out any bugs and/or user experience issues.
 
 ### Known Bugs
 
 -   Despite requesting that a user registers and logs in, any page is visible in the browser by copying and pasting the full web address.
+    -   Possible solution: Implemenet full Flask-Login user session management.
 -   The 'Risk Matrix' modal appears with a scrollbar on tighter landscape screens, which is not optimal.
+    -   Possible solution: Do not use a modal, just a simple image on hover instead.
 
 ## Deployment
 
@@ -176,7 +185,18 @@
 
 The project was deployed to Heroku using the following steps;
 
-1. ???
+1. (in Gitpod) pip3 freeze --local > requirements.txt
+2. (in Gitpod) echo web: python app.py > Procfile
+3. (in Heroku) create new app
+4. (in Heroku) config variables, under 'settings';
+    -   IP - 0.0.0.0.
+    -   PORT - 5000
+    -   SECRET_KEY - copied from the env.py file
+    -   MONGO_URI string - copied from MongoDB
+    -   MONGO_DBNAME - copied from MongoDB
+4. (in Gitpod) add, commit and push the 2 files from steps 1 & 2
+5. (in Heroku) enable 'automatic deployment from GitHub'
+6. (in Heroku) click 'deploy branch'
 
 ## Credits
 

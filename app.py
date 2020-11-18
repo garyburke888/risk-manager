@@ -12,7 +12,9 @@ if os.path.exists("env.py"):
     import env
 
 
-"""Create an instance of the Flask class and set environmental variables"""
+"""Create an instance of the Flask class,
+set environmental variables
+"""
 
 
 app = Flask(__name__)
@@ -21,6 +23,7 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+
 
 mongo = PyMongo(app)
 
@@ -43,7 +46,9 @@ def get_risks():
     return render_template("risks.html", risks=risks)
 
 
-"""Search function on Risk Register page, indexes are set within MongoDB"""
+"""Search function on Risk Register page,
+indexes are set within MongoDB
+"""
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -53,7 +58,7 @@ def search():
     return render_template("risks.html", risks=risks)
 
 
-"""Register a new user"""
+"""Register a New User"""
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -113,7 +118,7 @@ def login():
     return render_template("login.html")
 
 
-"""User profile"""
+"""User Profile"""
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
@@ -128,7 +133,7 @@ def profile(username):
     return render_template("profile.html", username=username)
 
 
-"""User logout"""
+"""User Logout"""
 
 
 @app.route("/logout")
@@ -139,7 +144,7 @@ def logout():
     return redirect(url_for("index"))
 
 
-"""Add a new risk"""
+"""Add a New Risk"""
 
 
 @app.route("/add_risk", methods=["GET", "POST"])
@@ -229,7 +234,7 @@ def get_owners():
     return render_template("owners.html", owners=owners)
 
 
-"""Add a new Risk Owner"""
+"""Add a New Risk Owner"""
 
 
 @app.route("/add_owner", methods=["GET", "POST"])
@@ -272,7 +277,9 @@ def delete_owner(owner_id):
     return redirect(url_for("get_owners"))
 
 
-"""Execute script, satisfy conditional statement and run app"""
+"""Execute script,
+satisfy conditional statement and run app
+"""
 
 
 if __name__ == "__main__":
