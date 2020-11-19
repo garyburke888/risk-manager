@@ -39,6 +39,8 @@
 ![eRisk Wireframes](/static/images/erisk_wireframe_1.png)
 ![eRisk Wireframes](/static/images/erisk_wireframe_2.png)
 ![eRisk Wireframes](/static/images/erisk_wireframe_3.png)
+![eRisk MongoDB Entity Relationship Diagram](/static/images/erisk_erd.png)
+![eRisk MongoDB Screenshot](/static/images/erisk_mongodb.png)
 
 ## Features
 
@@ -50,6 +52,7 @@
 -   Materialize Collapsible Risk Register.
 -   Risk Rating Guide modal.
 -   Mobile collapse nav bar.
+-   Risk Open/Closed Status with Icons & Tooltips
 -   Different user permissions (Admin/User)
 
 ![eRisk Index / Login / Register / Profile](/static/images/erisk_screenshots_1.png)
@@ -176,8 +179,6 @@
 
 -   Despite requesting that a user registers and logs in, any page is visible in the browser by copying and pasting the full web address.
     -   Possible solution: Implemenet full Flask-Login user session management.
--   The 'Risk Matrix' modal appears with a scrollbar on tighter landscape screens, which is not optimal.
-    -   Possible solution: Do not use a modal, just a simple image on hover instead.
 
 ## Deployment
 

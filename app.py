@@ -1,6 +1,3 @@
-"""Make code available"""
-
-
 import os
 from flask import (
     Flask, flash, render_template,
@@ -10,11 +7,6 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
-
-
-"""Create an instance of the Flask class,
-set environmental variables
-"""
 
 
 app = Flask(__name__)
@@ -28,52 +20,60 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-"""Map & Define Index Page Route"""
-
-
 @app.route("/")
 @app.route("/index")
 def index():
     return render_template("index.html")
 
 
-"""Risk Register"""
-
-
 @app.route("/get_risks")
 def get_risks():
+    """
+    Main 'Risk Register' from 'risks'
+    collection in MongoDB.
+    """
     risks = list(mongo.db.risks.find())
     return render_template("risks.html", risks=risks)
 
 
-"""Search function on Risk Register page,
-indexes are set within MongoDB
-"""
-
-
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    # grab from search form input.
     query = request.form.get("query")
+    """
+    Search function on 'Risk Register' page.
+    Indexes are set within MongoDB and match all fields in the 'Risk' form.
+    """
     risks = list(mongo.db.risks.find({"$text": {"$search": query}}))
     return render_template("risks.html", risks=risks)
-
-
-"""Register a New User"""
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        # check if username already exists in database
+        """
+        Check if 'username' already exists within
+        'users' collection in MongoDB. If so,
+        give a flash message and reload the form.
+        """
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
-
+        """
+        Register user with 'username' and 'password'.
+        Add to 'users' collection in MongoDB and
+        implement Werkzeug generate_password_hash
+        helper which takes a plaintext password,
+        hashing method and salt length as an input
+        to produce hashed password, then stored in
+        MongoDB.
+        """
         register = {
             "username": request.form.get("username").lower(),
+            # Werkzeug generate_password_hash helper
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(register)
@@ -86,18 +86,20 @@ def register():
     return render_template("register.html")
 
 
-"""User Login"""
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        # check if username exists in database
+        """
+        Check if 'username' already exists within
+        'users' collection in MongoDB. If so,
+        check the password using Werkzeug
+        check_password_hash helper.
+        """
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            # ensure hashed password matches user input
+            # password match
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
@@ -106,7 +108,7 @@ def login():
                 return redirect(url_for(
                     "profile", username=session["user"]))
             else:
-                # invalid password match
+                # password doesn't match
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
 
@@ -118,12 +120,12 @@ def login():
     return render_template("login.html")
 
 
-"""User Profile"""
-
-
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab the session user's username from database
+    """
+    Get the sessions user's username from 'users'
+    collection in MongoDB and return 'Profile' page.
+    """
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
@@ -131,9 +133,6 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return render_template("profile.html", username=username)
-
-
-"""User Logout"""
 
 
 @app.route("/logout")
@@ -144,12 +143,14 @@ def logout():
     return redirect(url_for("index"))
 
 
-"""Add a New Risk"""
-
-
 @app.route("/add_risk", methods=["GET", "POST"])
 def add_risk():
     if request.method == "POST":
+        """
+        Input form to add a new 'Risk' to the
+        'Risk Register' which is held in the 'risks'
+        collection in MongoDB.
+        """
         is_open = "on" if request.form.get("is_open") else "off"
         risk = {
             "owner_name": request.form.get("owner_name"),
@@ -163,6 +164,11 @@ def add_risk():
             "progress_on_actions": request.form.get("progress_on_actions"),
             "date_raised": request.form.get("date_raised"),
             "is_open": is_open,
+            """
+            Current logged-in user = 'created_by',
+            which will be used to allow (or not)
+            certain users to edit/delete certain 'Risks'.
+            """
             "created_by": session["user"]
         }
         mongo.db.risks.insert_one(risk)
@@ -179,12 +185,10 @@ def add_risk():
         ratings=ratings)
 
 
-"""Edit a Risk"""
-
-
 @app.route("/edit_risk/<risk_id>", methods=["GET", "POST"])
 def edit_risk(risk_id):
     if request.method == "POST":
+        # edit a current 'Risk'.
         is_open = "on" if request.form.get("is_open") else "off"
         submit = {
             "owner_name": request.form.get("owner_name"),
@@ -215,30 +219,34 @@ def edit_risk(risk_id):
         ratings=ratings)
 
 
-"""Delete a Risk"""
-
-
 @app.route("/delete_risk/<risk_id>")
 def delete_risk(risk_id):
+    """
+    Delete 'Risk' from 'risks'
+    collection in MongoDB using the python
+    remove() method.
+    """
     mongo.db.risks.remove({"_id": ObjectId(risk_id)})
     flash("Risk Successfully Deleted")
     return redirect(url_for("get_risks"))
 
 
-"""View Risk Owners"""
-
-
 @app.route("/get_owners")
 def get_owners():
+    """
+    Get list of owners from collection in MongoDB
+    and sort them alphabetically for display.
+    """
     owners = list(mongo.db.owners.find().sort("owner_name", 1))
     return render_template("owners.html", owners=owners)
 
 
-"""Add a New Risk Owner"""
-
-
 @app.route("/add_owner", methods=["GET", "POST"])
 def add_owner():
+    """
+    Add a new owner to the 'owners' collection
+    in MongoDB under 'owner_name'.
+    """
     if request.method == "POST":
         owner = {
             "owner_name": request.form.get("owner_name")
@@ -250,11 +258,9 @@ def add_owner():
     return render_template("add_owner.html")
 
 
-"""Edit a Risk Owner"""
-
-
 @app.route("/edit_owner/<owner_id>", methods=["GET", "POST"])
 def edit_owner(owner_id):
+    # edit an 'owner'
     if request.method == "POST":
         submit = {
             "owner_name": request.form.get("owner_name")
@@ -267,22 +273,15 @@ def edit_owner(owner_id):
     return render_template("edit_owner.html", owner=owner)
 
 
-"""Delete a Risk Owner"""
-
-
 @app.route("/delete_owner/<owner_id>")
 def delete_owner(owner_id):
+    # delete owner using python remove()
     mongo.db.owners.remove({"_id": ObjectId(owner_id)})
     flash("Risk Owner Successfully Deleted")
     return redirect(url_for("get_owners"))
 
 
-"""Execute script,
-satisfy conditional statement and run app
-"""
-
-
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

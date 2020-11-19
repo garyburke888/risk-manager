@@ -31,6 +31,7 @@
                 <div class="col s12">
                     <i class="fas fa-caret-down"></i>
                     <strong>{{ risk.risk_name }}</strong>
+                    <!-- Check Risk Status (Open or Closed) -->
                     {% if risk.is_open == "on" %}
                     <i class="fas fa-lock-open white-text text-darken-1 tooltipped"
                         data-position="right" data-tooltip="Risk Status = Open"></i>
@@ -100,6 +101,7 @@
                     </div>
                     <!-- Edit & Delete Buttons-->
                     <div class="col m8 s12">
+                        <!-- Check if the current logged-in user created this 'Risk', or is an Admin -->
                         {% if session.user|lower == risk.created_by|lower or session.user|lower == "admin"|lower %}
                             <a href="{{ url_for('edit_risk', risk_id=risk._id )}}" class="waves-effect waves-light btn-small">Edit <i class="fas fa-edit prefix"></i></a>
                             <a href="{{ url_for('delete_risk', risk_id=risk._id) }}" class="waves-effect waves-light btn-small confirmation">Delete <i class="fas fa-trash prefix"></i></a>
