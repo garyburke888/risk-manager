@@ -165,9 +165,9 @@ def add_risk():
             "date_raised": request.form.get("date_raised"),
             "is_open": is_open,
             """
-            Current logged-in user = 'created_by',
+            Current logged-in user = created_by,
             which will be used to allow (or not)
-            certain users to edit/delete certain 'Risks'.
+            certain users to edit/delete certain 'Risks'
             """
             "created_by": session["user"]
         }
