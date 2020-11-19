@@ -164,11 +164,6 @@ def add_risk():
             "progress_on_actions": request.form.get("progress_on_actions"),
             "date_raised": request.form.get("date_raised"),
             "is_open": is_open,
-            """
-            Current logged-in user = created_by,
-            which will be used to allow (or not)
-            certain users to edit/delete certain 'Risks'
-            """
             "created_by": session["user"]
         }
         mongo.db.risks.insert_one(risk)
