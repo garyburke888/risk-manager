@@ -55,6 +55,7 @@
 -   Risk Open/Closed Status with Icons & Tooltips
 -   Different user permissions (Admin/User)
 
+![eRisk Risk Register](/static/images/erisk_risk_reg.png)
 ![eRisk Index / Login / Register / Profile](/static/images/erisk_screenshots_1.png)
 ![eRisk Add / Edit / Matrix](/static/images/erisk_screenshots_2.png)
 ![eRisk Delete / Owners](/static/images/erisk_screenshots_3.png)
